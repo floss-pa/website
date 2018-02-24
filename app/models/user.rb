@@ -41,12 +41,20 @@ class User < ApplicationRecord
       if user.nil?
         res = Net::HTTP.get_response(URI(auth.info.image + "?type=large"))
         logger.info "res: #{auth.info.image}?type=large"
+          if res.kind_of?(Array)
+            media = open(res['location'])
+          else
+            media = open(res)
+          end
+          if media.nil?
+            media=""
+          end
         user = User.new(
           name: auth.extra.raw_info.name,
           #username: auth.info.nickname || auth.uid,
           email: email ? email : "#{TEMP_EMAIL_PREFIX}-#{auth.uid}-#{auth.provider}.com",
           password: Devise.friendly_token[0,20],
-          avatar: open(res['location'])
+          avatar: media
         )
         user.skip_confirmation!
         user.save!
