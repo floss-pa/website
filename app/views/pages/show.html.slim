@@ -1,0 +1,34 @@
+div class="container"
+  div class="row"
+    p
+      | &nbsp;
+    p#notice = notice
+    
+    p
+      strong User:
+      = @page.user
+    p
+      strong Title:
+      = @page.title
+    p
+      strong Language:
+      = @page.language
+    p
+      strong Content:
+      = @page.content
+    p
+      strong Carousel:
+      = @page.carousel
+    p
+      strong Is publish:
+      = @page.is_publish
+    p
+      strong In menu:
+      = @page.in_menu
+    p
+      strong Is home:
+      = @page.is_home
+    
+    => link_to t(:edit), edit_page_path(@page)
+    '|
+    =< link_to t(:back), pages_path

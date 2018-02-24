@@ -1,0 +1,31 @@
+= form_for @carousel do |f|
+  - if @carousel.errors.any?
+    #error_explanation
+    div class="form-group row"
+      h2 = "#{pluralize(@carousel.errors.count, "error")} prohibited this carousel from being saved:"
+      ul
+        - @carousel.errors.full_messages.each do |message|
+          li = message
+
+  div class="form-group row"
+    = f.label t(:header), class: "form-input-label"
+    = f.text_field :header, class: "form-control"
+  div class="form-group row"
+    = f.label t(:sentence), class: "form-input-label"
+    = f.text_field :sentence, class: "form-control"
+  div class="form-group row"
+    = f.label t(:link), class: "form-input-label"
+    = f.text_field :link, class: "form-control"
+  div class="form-group row"
+    = f.label t(:image), class: "form-input-label"
+    = f.file_field :image, class: "form-control-file"
+  div class="form-group row"
+    = f.label t(:page), class: "form-input-label"
+    | :&nbsp;
+    = f.select :page_id, Page.all.collect {|p| [p.title, p.id]}, class: "form-control"
+  div class="form-check"
+    = f.check_box :active, class: "form-check-input"
+    | &nbsp;
+    = f.label t(:active), class: "form-input-label"
+  div class="form-group row"
+    = f.submit t(:save),  class: "btn btn-primary"

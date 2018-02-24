@@ -1,0 +1,18 @@
+div class="container"
+  div class="row"
+     div class="bs-docs-section clearfix"
+       div class="row"
+         div class="page-header"
+           div class="col-lg-12"
+             div class="page-header"
+               h2 class="display-3"
+                 = t(:edit)
+                 | &nbsp;
+                 = t(:page)
+     
+               == render 'form'
+     
+             => link_to 'Show', @carousel
+             '|
+             =< link_to 'Back', carousels_path
+

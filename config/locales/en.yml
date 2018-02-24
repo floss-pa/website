@@ -1,0 +1,113 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+en:
+  hello: "Hello world"
+  name: "Name"
+  email: "Email"
+  password: "Password"
+  password_confirmation: "Password Confirmation"
+  update: "Update"
+  sign_in: "Login"
+  sign_out: "Logout"
+  sign_up: "Register"
+  remember_me: "Remember me"
+  unhappy: "Un Happy"
+  are_you_sure: "Are you Sure?"
+  send_me_reset_password_instructions: "Send me reset password instructions"
+  cancel_my_account: "Cancel My Account"
+  login_with_facebook: "Login with Facebook"
+  login_with_github: "Login with GitHub"
+  sign_up_with_facebook: "Sign Up with Facebook"
+  facebook: "Facebook"
+  default_site_title: "Free Software and Open Source in Panama"
+  title_will_display_on_the_page_and_work_as_search_index: "Title will display on the page"
+  keyworks_will_help_search_engines_to_spread_the_news: "Keywords will help spread the news"
+  only_published_items_will_be_display_to_all_users: "Only publised items will be on public display"
+  add_community: "Add a Community"
+  add_news: "Add News"
+  sign_up_with_github: "Sign Up with GitHup"
+  resend_confirmation_instructions: "Resend confirmation instructions"
+  or: "Or"
+  back: "Back"
+  news: "News"
+  more: "More"
+  community: "Community"
+  communities: "Communities"
+  edit: "Edit"
+  title: "Title"
+  back_to_top: "Back to top"
+  new_page: "New Page"
+  add_all_the_information_that_best_describe_your_community: "Add all the information that best describe your community"
+  name_that_describe_your_community: "Name of your community"
+  site: "Web Site URL"
+  image: "Image"
+  it_is_always_a_nice_idea_to_have_a_logo: "It is always a good idea to have a logo"
+  add_the_url_of_your_community: "Add the url of your community web site"
+  characters_minimum: "Minimal Characters"
+  title_placeholder: "Title (required)"
+  keywords: "Keywords"
+  language: "Language"
+  carousel: "Carousel"
+  is_publish: "Is publish"
+  in_menu: "In menu"
+  menu_label: "Menu Label"
+  save: "Save"
+  content: "Content"
+  header: "Header"
+  sentence: "Sentence"
+  active: "Active"
+  link: "Url"
+  image: "Image"
+  page: "Page"
+  news_content: "Block of text that contains the news information"
+  news_error_header:  "%{error} prohibited this news from being saved:"
+  user_error_header: "%{error} prohibited user profile from being saved:"
+  username: "Username"
+  username_placeholder: "Username (required)"
+  subject: "Subject"
+  subject_placeholder: "Subject (required)"
+  goal: "Goal"
+  goal_placeholder: "Goal (require)"
+  url: "Url"
+  summary: "Summary"
+  profile_title: "%{name}'s profile"
+  account: "Account"
+  add: "Add"
+  Education: "education"
+  Contribution: "contribution"
+  Project: "project"
+  url: "url"
+  url_placeholder: "http://www.gitub.com/project_name"
+  summary: "Summary"
+  from: "From"
+  until: "Until"
+  by: "By"
+  publish: "Publish"
+  title: "Title"
+  keywords: "Keywords"
+  information: "Information"
+  logo: "Logo"
+  show: "Show"
+  destroy: "Borrar"
+  new_carousel: "New Carousel"
+  carousels: "Carousel"
+  pages: "Pages"

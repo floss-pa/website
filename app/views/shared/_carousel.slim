@@ -1,0 +1,18 @@
+div class="container"
+  div class="splash"
+     div id="myCarousel" class="carousel slide"
+      div class="carousel-inner"
+        - count=0
+        - @page.carousels.each do |row|
+          - item_class = count==0 ? {class: "item active"} : {class: "item"}
+          div *item_class
+            - count=1
+            = image_tag row.image.url
+            div class="container"
+              div class="carousel-caption"
+                h1 = row.header
+                p class="lead"
+                  = row.sentence
+                = link_to "text", row.link, class: "btn btn-lage btn-primary" 
+        a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;
+        a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;

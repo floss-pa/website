@@ -1,0 +1,34 @@
+div class="container"
+  div class="row"
+    div class="page-header"
+      div class="col-lg-12"
+        h1
+          = t(:news)
+          | :
+        - @news.each do |news|
+            div class="jumbotron"
+              div class="row"
+                h2 class="display-3"
+                 div class="col-lg-10"
+                  = link_to news_custom_path(news.id, news.title.gsub(/\s/,'-'))
+                    = news.title
+                 div class="col-lg-2"
+                  small
+                    = time_ago_in_words(news.published_at)
+              div class="row"
+                div class="col-lg-12"
+                  = t(:by)
+                  | :&nbsp;
+                  = link_to news.user.name, user_custom_path(news.user.id,news.user.name.gsub(/\s/,'-'))
+              div class="row"
+               | &nbsp;
+              div class="row"
+               div class="col-lg-12"
+                p class="lead"
+                  = sanitize news.news_content.content
+              hr class="my-4"
+                = social_share_button_tag(news.title, desc: news.news_content.content)
+              div class="row"
+               | &nbsp;
+        = will_paginate @news, renderer: BootstrapPagination::Rails
+

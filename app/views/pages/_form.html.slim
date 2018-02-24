@@ -1,0 +1,41 @@
+= form_for @page do |f|
+  - if @page.errors.any?
+    #error_explanation
+    div class="form-group row"
+      h2 = "#{pluralize(@page.errors.count, "error")} prohibited this page from being saved:"
+      ul
+        - @page.errors.full_messages.each do |message|
+          li = message
+
+  div class="form-group row"
+    = f.label t(:title), class: "form-input-label"
+    = f.text_field :title, required: true, minlength: "6", class: "form-control"
+  div class="form-group row"
+    = f.label t(:language), class: "form-input-label"
+    = f.text_field :language, required: true, class: "form-control"
+  div class="form-group row"
+    = f.label t(:keywords), class: "form-input-label"
+    = f.text_field :keywords, required: true, class: "form-control"
+  div class="form-group row"
+    = f.bootsy_area :content,rows: 20,required: true, class: "form-control"
+  div class="form-group row"
+    = f.check_box :carousel, class: "form-check-input"
+    | &nbsp;
+    = f.label t(:carousel), class: "form-input-label"
+  div class="form-check"
+    = f.check_box :is_publish, class: "form-check-input"
+    | &nbsp;
+    = f.label t(:is_publish), class: "form-input-label"
+  div class="form-check"
+    = f.check_box :in_menu, class: "form-check-input"
+    | &nbsp;
+    = f.label t(:in_menu), class: "form-input-label"
+  div class="form-group row"
+    = f.label t(:menu_label), class: "form-input-label"
+    = f.text_field :menu_label, class: "form-control"
+  div class="form-check"
+    = f.check_box :is_home, class: "form-check-input"
+    | &nbsp;
+    = f.label :is_home, class: "form-input-label"
+  div class="form-group row"
+    = f.submit t(:save), class: "btn btn-primary"

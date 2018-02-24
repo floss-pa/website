@@ -1,0 +1,39 @@
+div class="container"
+  div class="row"
+    div class="bs-docs-section clearfix"
+      div class="row"
+        div class="page-header"
+          div class="jumbotron"
+            div class="row"
+             div class="col-lg-12"
+              - if notice
+                div class="alert alert-dismissible alert-danger"
+                  button type="button" class="close" data-dismiss="alert"
+                    | &times;
+                  = notice
+              div class="col-lg-10"
+               | &nbsp;
+       
+              div class="col-lg-2"
+                - if can? :update, @news
+                  => link_to t(:edit), edit_news_path(@news)
+                  '|
+                =< link_to t(:black), news_index_path
+              h2 class="display-3"
+                = @news.title
+              div class="col-lg-10"
+               = t(:by)
+               | :&nbsp;
+               = @news.user.name
+              div class="col-lg-2"
+                = @news.published_at.strftime("%B %d, %Y") unless @news.published_at.nil?
+              div class="col-lg-12"
+               p class="lead"
+                 = sanitize @news.news_content.content
+              div class="col-lg-10"
+                = social_share_button_tag(@news.title,desc: @news.news_content.content)
+              div class="col-lg-2"
+                - if can? :update, @news
+                 => link_to 'Edit', edit_news_path(@news)
+                '|
+                =< link_to 'Back', news_index_path

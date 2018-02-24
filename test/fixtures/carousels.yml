@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  header: MyString
+  sentence: MyString
+  link: MyString
+  image: MyString
+  page: one
+  active: false
+
+two:
+  user: two
+  header: MyString
+  sentence: MyString
+  link: MyString
+  image: MyString
+  page: two
+  active: false

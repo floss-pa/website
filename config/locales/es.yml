@@ -1,0 +1,318 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+es:
+  date:
+    abbr_day_names:
+    - dom
+    - lun
+    - mar
+    - mié
+    - jue
+    - vie
+    - sáb
+    abbr_month_names:
+    -
+    - ene
+    - feb
+    - mar
+    - abr
+    - may
+    - jun
+    - jul
+    - ago
+    - sep
+    - oct
+    - nov
+    - dic
+    day_names:
+    - domingo
+    - lunes
+    - martes
+    - miércoles
+    - jueves
+    - viernes
+    - sábado
+    formats:
+      default: "%d/%m/%Y"
+      long: "%d de %B de %Y"
+      short: "%d de %b"
+    month_names:
+    -
+    - enero
+    - febrero
+    - marzo
+    - abril
+    - mayo
+    - junio
+    - julio
+    - agosto
+    - septiembre
+    - octubre
+    - noviembre
+    - diciembre
+    order:
+    - :day
+    - :month
+    - :year
+  datetime:
+    distance_in_words:
+      about_x_hours:
+        one: alrededor de 1 hora
+        other: alrededor de %{count} horas
+      about_x_months:
+        one: alrededor de 1 mes
+        other: alrededor de %{count} meses
+      about_x_years:
+        one: alrededor de 1 año
+        other: alrededor de %{count} años
+      almost_x_years:
+        one: casi 1 año
+        other: casi %{count} años
+      half_a_minute: medio minuto
+      less_than_x_minutes:
+        one: menos de 1 minuto
+        other: menos de %{count} minutos
+      less_than_x_seconds:
+        one: menos de 1 segundo
+        other: menos de %{count} segundos
+      over_x_years:
+        one: más de 1 año
+        other: más de %{count} años
+      x_days:
+        one: 1 día
+        other: "%{count} días"
+      x_minutes:
+        one: 1 minuto
+        other: "%{count} minutos"
+      x_months:
+        one: 1 mes
+        other: "%{count} meses"
+      x_seconds:
+        one: 1 segundo
+        other: "%{count} segundos"
+    prompts:
+      day: Día
+      hour: Hora
+      minute: Minutos
+      month: Mes
+      second: Segundos
+      year: Año
+  errors:
+    format: "%{attribute} %{message}"
+    messages:
+      accepted: debe ser aceptado
+      blank: no puede estar en blanco
+      confirmation: no coincide
+      empty: no puede estar vacío
+      equal_to: debe ser igual a %{count}
+      even: debe ser par
+      exclusion: está reservado
+      greater_than: debe ser mayor que %{count}
+      greater_than_or_equal_to: debe ser mayor que o igual a %{count}
+      inclusion: no está incluido en la lista
+      invalid: no es válido
+      less_than: debe ser menor que %{count}
+      less_than_or_equal_to: debe ser menor que o igual a %{count}
+      not_a_number: no es un número
+      not_an_integer: debe ser un entero
+      odd: debe ser impar
+      record_invalid: 'La validación falló: %{errors}'
+      taken: ya está en uso
+      too_long: es demasiado largo (%{count} caracteres máximo)
+      too_short: es demasiado corto (%{count} caracteres mínimo)
+      wrong_length: no tiene la longitud correcta (%{count} caracteres exactos)
+    template:
+      body: 'Se encontraron problemas con los siguientes campos:'
+      header:
+        one: No se pudo guardar este/a %{model} porque se encontró 1 error
+        other: No se pudo guardar este/a %{model} porque se encontraron %{count} errores
+  helpers:
+    select:
+      prompt: Por favor seleccione
+    submit:
+      create: Crear
+      submit: Guardar
+      update: Actualizar
+  number:
+    currency:
+      format:
+        delimiter: "."
+        format: "%n %u"
+        precision: 2
+        separator: ","
+        significant: false
+        strip_insignificant_zeros: false
+        unit: "€"
+    format:
+      delimiter: "."
+      precision: 3
+      separator: ","
+      significant: false
+      strip_insignificant_zeros: false
+    human:
+      decimal_units:
+        format: "%n %u"
+        units:
+          billion: mil millones
+          million: millón
+          quadrillion: mil billones
+          thousand: mil
+          trillion: billón
+          unit: ''
+      format:
+        delimiter: ''
+        precision: 1
+        significant: true
+        strip_insignificant_zeros: true
+      storage_units:
+        format: "%n %u"
+        units:
+          byte:
+            one: Byte
+            other: Bytes
+          gb: GB
+          kb: KB
+          mb: MB
+          tb: TB
+    percentage:
+      format:
+        delimiter: ''
+    precision:
+      format:
+        delimiter: ''
+  support:
+    array:
+      last_word_connector: " y "
+      two_words_connector: " y "
+      words_connector: ", "
+  time:
+    am: am
+    formats:
+      default: "%A, %d de %B de %Y %H:%M:%S %z"
+      long: "%d de %B de %Y %H:%M"
+      short: "%d de %b %H:%M"
+    pm: pm
+  will_paginate:
+    previous_label: "&#8592; Previo"
+    next_label: "Siguente &#8594;"
+    page_gap: "&hellip;"
+    page_entries_info:
+      single_page:
+        zero:  "No %{model} encontrado"
+        one:   "Mostando 1 %{model}"
+        other: "Mostrando todos %{count} %{model}"
+      single_page_html:
+        zero:  "No %{model} encontrado"
+        one:   "Mostrando <b>1</b> %{model}"
+        other: "Mostrando <b>todos&nbsp;%{count}</b> %{model}"
+
+      multi_page: "Mostrando %{model} %{from} - %{to} de %{count} en total"
+      multi_page_html: "Mostrando %{model} <b>%{from}&nbsp;-&nbsp;%{to}</b> de <b>%{count}</b> en total"
+  hello: "Hello world"
+  name: "Nombre"
+  email: "Correo Electrónico"
+  password: "Contraseña"
+  password_confirmation: "Confirmación de Contraseña"
+  update: "Actualizar"
+  sign_in: "Ingresar"
+  sign_out: "Salir"
+  sign_up: "Registrarce"
+  remember_me: "Recordarme"
+  unhappy: "No estas contento con el sitio"
+  are_you_sure: "¿Estas seguro?"
+  send_me_reset_password_instructions: "Enviame la solicitud de cambio de contraseña"
+  cancel_my_account: "Cancela mi cuenta"
+  login_with_facebook: "Ingresar con Facebook"
+  login_with_github: "Ingresar con GitHub"
+  sign_up_with_facebook: "Registrarce con Facebook"
+  facebook: "Facebook"
+  default_site_title: "Software Libre y Código Abierto en Panama"
+  title_will_display_on_the_page_and_work_as_search_index: "El titulo de la pagina"
+  keyworks_will_help_search_engines_to_spread_the_news: "Palabras clave que describen esta pagina"
+  only_published_items_will_be_display_to_all_users: "Solo los elementos publicados sera vistos lor los usuarios"
+  add_community: "Agrega tu Comunidad"
+  add_news: "Agrea Noticias"
+  sign_up_with_github: "Registrate con GitHup"
+  resend_confirmation_instructions: "Favor enviarme las instrucciones de confirmación"
+  or: "O"
+  back: "Atras"
+  news: "Noticias"
+  more: "Mas"
+  community: "Comunidad"
+  communities: "Comunidades"
+  edit: "Editar"
+  title: "Titulo"
+  back_to_top: "Regresar al principio"
+  new_page: "Nueva Pagina"
+  add_all_the_information_that_best_describe_your_community: "Ingresa toda la información que describe tu comunidad"
+  name_that_describe_your_community: "Nombre de tu comunidad"
+  site: "Dirección del sito Web"
+  image: "Imagen"
+  it_is_always_a_nice_idea_to_have_a_logo: "Es buena idea tener un logo"
+  add_the_url_of_your_community: "agrega la direccón de enlace de tu comunidad"
+  characters_minimum: "Caracteres minimos"
+  title_placeholder: "Titulo (requerido)"
+  keywords: "Palabras clave"
+  language: "Idioma"
+  carousel: "Carusel"
+  is_publish: "Es publico"
+  in_menu: "En el menu"
+  menu_label: "Etiqueta del menu"
+  save: "Guardar"
+  content: "Contenido"
+  header: "Encabezado"
+  sentence: "Frace"
+  active: "Activo"
+  link: "Dirección de Enlace"
+  image: "Imagen"
+  page: "Pagina"
+  news_content: "Bloque de texto que contiene la noticia"
+  news_error_header:  "%{error} evito que se guardar la noticia:"
+  user_error_header: "%{error} evito que se guardara el usuario:"
+  username: "Nombre de Usuario"
+  username_placeholder: "Nombre (requerido)"
+  subject: "Sujeto"
+  subject_placeholder: "Subjeto (requirido)"
+  goal: "Meta"
+  goal_placeholder: "Meta (requirido)"
+  url: "Dirección de Enlace"
+  summary: "Resumen"
+  profile_title: "Perfil del %{name}"
+  account: "Cuenta"
+  add: "Adicionar"
+  Education: "Educación"
+  Contribution: "Contribuciones"
+  Project: "proyectos"
+  url_placeholder: "http://www.gitub.com/project_name"
+  from: "desde"
+  until: "hasta"
+  by: "Por"
+  publish: "Publicado"
+  title: "Titulo"
+  keywords: "Palabras Clave"
+  information: "Información"
+  logo: "Logo"
+  show: "Mostrar"
+  destroy: "Borrar"
+  new_carousel: "Agregar un Carusel"
+  carousels: "Carusel"
+  pages: "Paginas"

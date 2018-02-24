@@ -1,0 +1,51 @@
+div class="container"
+  div class="row"
+     div class="bs-docs-section clearfix"
+       div class="row"
+        div class="page-header"
+         div class="col-lg-12"
+            h1
+              = t(:pages)
+              | :
+            = link_to t(:new_page), new_page_path
+       div class="row"
+         div class="col-lg-12"
+            table  class="table table-hover"
+              thead
+                tr
+                  th scope="col"
+                    = t(:owner)
+                  th scope="col"
+                    = t(:title)
+                  th scope="col"
+                    = t(:language)
+                  th scope="col"
+                    = t(:carousel)
+                  th scope="col"
+                    = t(:is_publish)
+                  th scope="col"
+                    = t(:in_menu)
+                  th scope="col"
+                    = t(:is_home)
+                  th scope="col"
+                  th scope="col"
+                  th scope="col"
+         
+              tbody
+                - @pages.each do |page|
+                  tr class="table-primary"
+                    td scope="row"
+                      = page.user.name
+                    td = page.title
+                    td = page.language
+                    td = page.carousel
+                    td = page.is_publish
+                    td = page.in_menu
+                    td = page.is_home
+                    td = link_to t(:show), page
+                    td = link_to t(:edit), edit_page_path(page)
+                    td = link_to t(:destroy), page, data: { confirm: t(:are_you_sure) }, method: :delete
+         
+            br
+         
+            = link_to t(:new_page), new_page_path

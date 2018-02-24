@@ -1,0 +1,12 @@
+div class="container"
+ div class="bs-docs-section clearfix"
+  div class="row"
+    div class="page-header"
+    div class="jumbotron"
+      div class="col-lg-12"
+        h2 class="display-3"
+          = t(:add)
+          | &nbsp;
+          = t(:community)
+        == render 'form'
+      = link_to t(:back), communities_path

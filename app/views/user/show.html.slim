@@ -1,0 +1,46 @@
+div class="container"
+  div class="row"
+    div class="bs-docs-section clearfix"
+      div class="row"
+        div class="page-header"
+          div class="row"
+            | &nbsp;
+            div class="col-lg-12"
+              div class="col-lg-3"
+                div class="card bg-light mb-3" style="max-width: 20rem;"
+                  div class="card-header"
+                  div class="card-body" style="text-align: center"
+                    p class="card-text"
+                      = image_tag @user.avatar.url, class: "img-circle"
+                    h4 class="card-title"
+                      = @user.name
+              div class="col-lg-9"
+                - @user.communities.each do |community|
+                  div class="card bg-light mb-3" style=""
+                    div class="card-header"
+                      = t(:community)
+                      | &nbsp;:
+                    div class="card-body "
+                      h4 class="card-title"
+                        = link_to community.name, community_path(community)
+                      p class="card-text"
+                        = strip_tags(community.information).truncate(300)
+                        - if strip_tags(community.information).size > 300
+                          | &nbsp;
+                          = link_to t(:more), community_path(community)
+                - @user.news.where("publish=true").order("published_at desc").each do |article|
+                  div class="card bg-light mb 3" style=""
+                    div class="card-header"
+                      = t(:news)
+                      | &nbsp;
+                    div class="card-body"
+                      h4 class="card-title"
+                        = link_to article.title, news_path(article)
+                      p class="card-text"
+                        = strip_tags(article.news_content.content).truncate(300)
+                        - if strip_tags(article.news_content.content).truncate(300).size > 300
+                          | &nbsp;
+                          = link_to t(:more), news_path(article)
+
+
+

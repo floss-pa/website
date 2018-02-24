@@ -1,0 +1,30 @@
+= form_for @community do |f|
+  - if @community.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@community.errors.count, "error")} prohibited this community from being saved:"
+      ul
+        - @community.errors.full_messages.each do |message|
+          li = message
+
+  div class="form-group row"
+    = f.label t(:name), class: "form-input-label"
+    = f.text_field :name, required: true, minlength: "6", maxlenght: "50", class: "form-control"
+    small id="titlelHelp" class="form-text text-muted"
+      = t(:name_that_describe_your_community)
+  div class="form-group row"
+    = f.label t(:information), class: "form-input-label"
+    = f.bootsy_area :information, rows: 20, required: true, minlength: "10", class: "form-control"
+    small id="titlelHelp" class="form-text text-muted"
+      = t(:add_all_the_information_that_best_describe_your_community)
+  div class="form-group row"
+    = f.label t(:logo), class: "form-input-label"
+    = f.file_field :logo , class: "form-control-file"
+    small id="titlelHelp" class="form-text text-muted"
+      = t(:it_is_always_a_nice_idea_to_have_a_logo)
+  div class="form-group row"
+    = f.label t(:site), class: "form-input-label"
+    = f.text_field :site, class: "form-control"
+    small id="titlelHelp" class="form-text text-muted"
+      = t(:add_the_url_of_your_community)
+  div class="form-group row"
+    = f.submit t(:save), class: "btn btn-primary"

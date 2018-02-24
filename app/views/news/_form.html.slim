@@ -1,0 +1,34 @@
+= form_for @news do |f|
+  - if @news.errors.any?
+    #error_explanation
+      div class="form-group row"
+        h2 = "#{pluralize(@news.errors.count, "error")} prohibited this news from being saved:"
+        ul
+          - @news.errors.full_messages.each do |message|
+            li = message
+
+  div class="form-group row"
+    = f.label t(:title), class: "form-input-label"
+    = f.text_field :title, required: true, minlength: "6", maxlenght: "50", class: "form-control"
+    small id="titlelHelp" class="form-text text-muted"
+      = t(:title_will_display_on_the_page_and_work_as_search_index)
+  div class="form-group row"
+    = f.label t(:keywords), class: "form-input-label"
+    = f.text_field :keywords, class: "form-control"
+    small id="emailHelp" class="form-text text-muted"
+      = t(:keyworks_will_help_search_engines_to_spread_the_news)
+  div class="form-group row"
+    - if params[:action]=="edit"
+      = f.fields_for :news_content do |content_form|
+        = content_form.bootsy_area :content, rows: 20, required: true, minlength:50, class: "form-control"
+    - else
+      = f.fields_for :news_content, NewsContent.new do |content_form|
+        = content_form.bootsy_area :content, cols: 122, rows: 40
+  div class="form-check"
+    div class="form-check-label"
+      = f.check_box :publish,  class: "form-check-input"
+      | &nbsp;
+      = f.label t(:publish)
+    = t(:only_published_items_will_be_display_to_all_users)
+  div class="form-group row"
+    = f.submit t(:save), class: "btn btn-primary"

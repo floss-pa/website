@@ -1,0 +1,50 @@
+div class="container"
+ div class="row"
+  div class="navbar-header"
+    a href="../" class="navbar-brand"  = image_tag "logo.png", alt: "floss-pa", class: "img-fluid"
+    button class="navbar-toggle" data-toggle="collapse" data-target="#navbar-main"
+      span class="icon-bar"
+      span class="icon-bar"
+      span class="icon-bar"
+
+  div  class="navbar-collapse collapse" id="navbar-main"
+    ul class="nav navbar-nav"
+      li = link_to t(:news), news_index_path
+      li = link_to t(:communities), communities_path
+      li = link_to "Wiki", "https://wiki.floss-pa.net/",{:target=>"_blank"}
+
+    ul class="nav navbar-nav navbar-right"
+
+      - unless user_signed_in?
+
+        li = link_to t(:sign_up), new_user_registration_path
+        li = link_to t(:sign_in), new_user_session_path
+
+      - else
+
+        - if current_user.has_role? :admin
+
+          li class="dropdown"
+            a class="dropdown-toggle" data-toggle="dropdown" href="#" id="user"
+              | Admin
+              span class="caret"
+            ul class="dropdown-menu" aria-labelledby="user"
+             li = link_to t(:pages), pages_path
+             li = link_to t(:carousel), carousels_path
+
+        li class="dropdown"
+          a class="dropdown-toggle" data-toggle="dropdown" href="#" id="user"
+            - if current_user.avatar.blank?
+              = current_user.name
+            - else
+              = image_tag current_user.avatar.url(:thumb), class: "img-circle", height: 20
+            span class="caret"
+
+          ul class="dropdown-menu" aria-labelledby="user"
+            / li = link_to t(:profile), user_path(current_user)
+            / li = link_to t(:edit) + ' ' + t(:profile), edit_user_path(current_user)
+            li = link_to t(:add_news), new_news_path if can? :news, :create
+            li = link_to t(:add_community), new_community_path if can? :communities, :create
+            li = link_to t(:account), edit_user_registration_path
+            li = link_to t(:sign_out), destroy_user_session_path, {:method=>"delete", :id=>"logout"}
+

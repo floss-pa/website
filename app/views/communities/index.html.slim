@@ -1,0 +1,35 @@
+div class="bs-docs-section clearfix"
+ div class="container"
+  div class="row"
+    div class="page-header"
+      div class="col-lg-12"
+        h1
+          = t(:communities)
+          | :
+        - @communities.each do |community|
+            div class="jumbotron"
+              div class="row"
+                h2 class="display-3"
+                 div class="col-lg-8"
+                  = link_to community_custom_path(community.id,community.name.gsub(/\s/,'-'))
+                    = community.name
+                 div class="col-lg-4"
+                 small
+                    = time_ago_in_words(community.created_at)
+              div class="row"
+                div class="col-lg-12"
+                  = t(:by)
+                  | :&nbsp;
+                  = link_to community.user.name, user_custom_path(community.user,community.user.name.gsub(/\s/,'-'))
+              div class="row"
+               | &nbsp;
+              div class="row"
+               div class="col-lg-12"
+                p class="lead"
+                  = sanitize community.information
+              hr class="my-4"
+                = social_share_button_tag(community.name, desc: community.information)
+              div class="row"
+               | &nbsp;
+        = will_paginate @communities, renderer: BootstrapPagination::Rails
+
