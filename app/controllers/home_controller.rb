@@ -22,8 +22,8 @@ class HomeController < ApplicationController
                 },
                 domain: "Floss-pa"
                 }
-
-
-
+  end
+  def privacy
+    @page=Page.find(2)
   end
 end

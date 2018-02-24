@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'privacy' => 'home#privacy',  :defaults => { :id => '2' }, as: 'privacy'
   get 'news/:id/*anything' => 'news#show', as: 'news_custom'
   get 'communities/:id/*anything' => 'communities#show', as: 'community_custom'
   get 'user/:id/*anything' => 'user#show', as: 'user_custom'
