@@ -13,6 +13,7 @@ div class="container"
                 h1 = row.header
                 p class="lead"
                   = row.sentence
-                = link_to "text", row.link, class: "btn btn-lage btn-primary" 
+                - unless row.link.empty?
+                  = link_to t(:goto), row.link, class: "btn btn-lage btn-primary" 
         a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;
         a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;
