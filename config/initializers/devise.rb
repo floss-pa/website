@@ -280,4 +280,6 @@ Devise.setup do |config|
   #config.omniauth :twitter, "KEY", "SECRET"
   #config.omniauth :linked_in, "KEY", "SECRET"
   config.omniauth :github, ENV['GH_ID'], ENV['GH_TOKEN'],scope: "user,gist"
+  #set this to true to debug device omniauth 
+  OmniAuth.config.logger = Rails.logger if Rails.env.development?
 end

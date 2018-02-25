@@ -1,0 +1,17 @@
+div class="container"
+  div class="row"
+    div class="bs-docs-section clearfix"
+      div class="row"
+        div class="page-header"
+          div class="jumbotron"
+            div class="row"
+             div class="col-lg-12"
+               div class="alert alert-dismissible alert-warning"
+                 button type="button" class="close" data-dismiss="alert"
+                   | &times;
+                 h4 class="alert-heading" 
+                   = t(:warning)
+                 p class="mb-0" 
+                   = content_tag :div, class: "exception", data: { status: @exception.status, response: @exception.response.to_s.humanize, rails: Rails.version }, onclick: ("location.href=\"#{root_url}\";" if @exception.status == "500" && Rails.application.routes.recognize_path("/")), title: ("Return Home" if @exception.status == "500" && Rails.application.routes.recognize_path("/")) do 
+                     = content_tag :span, @exception.description.html_safe 
+

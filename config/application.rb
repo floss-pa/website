@@ -18,6 +18,6 @@ module Webapp
     config.action_view.sanitized_allowed_tags = ['h1','h2','h3','h4','h5','strong', 'em', 'a','table','td','tr','thead','tbody','br','ul','li','div','img']
     config.action_view.sanitized_allowed_attributes = ['href', 'title','src','class']
     config.time_zone = "Eastern Time (US & Canada)"
-    config.exception_handler = { dev: false }
+    config.exception_handler = { dev: true }
   end
 end
