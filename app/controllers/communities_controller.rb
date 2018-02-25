@@ -1,7 +1,7 @@
 class CommunitiesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
   before_action :set_community, only: [:show, :edit, :update, :destroy]
-  #load_and_authorize_resource
+  load_and_authorize_resource
 
   # GET /communities
   # GET /communities.json
