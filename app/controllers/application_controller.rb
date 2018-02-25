@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :set_locale
+  before_action :set_paper_trail_whodunnit
 
   def ensure_signup_complete
     # Ensure we don't go into an infinite loop
