@@ -30,7 +30,7 @@ div class="container"
                    = sanitize(@community.information)
              div class="col-lg-12"
                div class="col-lg-10"
-                 = social_share_button_tag(@community.name,@community.information)
+                 = social_share_button_tag(@community.name,desc: @community.information)
                div class="col-lg-2"
                 - if can? :update, @community
                   => link_to t(:edit), edit_community_path(@community)
