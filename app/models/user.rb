@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_many :carousels
   has_many :communities
   has_many :members
+  has_many :events
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   TEMP_EMAIL_PREFIX = 'change@me'

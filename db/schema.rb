@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180225061003) do
+ActiveRecord::Schema.define(version: 20180226051349) do
 
   create_table "assignments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "user_id"
@@ -78,6 +78,30 @@ ActiveRecord::Schema.define(version: 20180225061003) do
     t.datetime "updated_at", null: false
     t.index ["community_id"], name: "index_community_members_on_community_id"
     t.index ["user_id"], name: "index_community_members_on_user_id"
+  end
+
+  create_table "events", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "user_id"
+    t.string "title"
+    t.string "image"
+    t.string "location"
+    t.string "frecuency"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.text "description"
+    t.string "keyworkds"
+    t.string "ticket_url"
+    t.bigint "community_id"
+    t.string "organizer"
+    t.boolean "publish"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "image_file_name"
+    t.string "image_content_type"
+    t.integer "image_file_size"
+    t.datetime "image_updated_at"
+    t.index ["community_id"], name: "index_events_on_community_id"
+    t.index ["user_id"], name: "index_events_on_user_id"
   end
 
   create_table "identities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -198,6 +222,8 @@ ActiveRecord::Schema.define(version: 20180225061003) do
   add_foreign_key "communities", "users"
   add_foreign_key "community_members", "communities"
   add_foreign_key "community_members", "users"
+  add_foreign_key "events", "communities"
+  add_foreign_key "events", "users"
   add_foreign_key "identities", "users"
   add_foreign_key "members", "communities"
   add_foreign_key "members", "users"
