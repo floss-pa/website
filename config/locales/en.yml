@@ -116,3 +116,7 @@ en:
   privacy: "Privacy"
   warning: "Warning!"
   photo: "Photo"
+  sample_ticket_url: "Add ticket system url"
+  organizer_information: "Add some information about your organization"
+  place_where_your_event: "Address where your event will take place"
+  name_of_your_event: "Name of your event"

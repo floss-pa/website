@@ -321,3 +321,7 @@ es:
   privacy: "Politicas de Privacidad"
   warning: "!Advertencia!"
   photo: "Foto"
+  sample_ticket_url: "Agrega la dirección de enlace del sistema de tickets"
+  organizer_information: "Agrega información sobre su organización"
+  place_where_your_event: "Ingresa la dirección de tu evento"
+  name_of_your_event: "Nombre de tu Evento"
