@@ -28,7 +28,7 @@ div class="bs-docs-section clearfix"
                 p class="lead"
                   = sanitize community.information
               hr class="my-4"
-                = social_share_button_tag(community.name, url: "#{url_for communities_url(community)}", desc: community.information, image: community.logo.url)
+                = social_share_button_tag(community.name, url: "#{url_for community_url(community)}", desc: community.information, image: community.logo.url)
               div class="row"
                | &nbsp;
         = will_paginate @communities, renderer: BootstrapPagination::Rails
