@@ -27,7 +27,7 @@ div class="container"
                 p class="lead"
                   = sanitize news.news_content.content
               hr class="my-4"
-                = social_share_button_tag(news.title, desc: news.news_content.content)
+                = social_share_button_tag(news.title,:url => "#{url_for(news_url(news))}", desc: news.news_content.content)
               div class="row"
                | &nbsp;
         = will_paginate @news, renderer: BootstrapPagination::Rails
