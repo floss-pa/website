@@ -7,7 +7,7 @@ class AttendeesController < ApplicationController
   # GET /attendees.json
   def index
     @event= Event.find(params[:event_id])
-    if current_user.id.to_i===@event.user_id.to_i
+    if current_user.id.to_i===@event.user_id.to_i || current_user.has_role?(:admin)
       @attendees = @event.attendees.paginate(:page => params[:page],:per_page =>9 ).order('created_at DESC')
     else
       redirect_back(fallback_location: root_path, status: 403)

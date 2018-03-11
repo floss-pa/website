@@ -16,7 +16,7 @@ Things you may want to cover:
     - **RAILS_ENV**="development"
     - You need to generate your secret key, using rails command :
        ```ruby
-      sudo bundle install
+       bundle install --path =~/.gems
        bundle exec rails secret
        ```
         **SECRET_KEY_BASE**=""
