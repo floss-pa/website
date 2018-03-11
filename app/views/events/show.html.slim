@@ -27,6 +27,8 @@ div class="clearfix"
           - if can? :update, @event
             = link_to t(:edit), edit_event_path(@event)
             '|
+            = link_to t(:attendees), event_attendees_path(@event)
+            '|
           = link_to t(:back), events_path
       div class="row"
         figure class="figure"
@@ -78,7 +80,7 @@ div class="clearfix"
                         = link_to @event.ticket_url, @event.ticket_url, target: "_blank"
                   = social_share_button_tag(@event.title,desc: @event.description)
                 div class="col-lg-2"
-                  - unless @event.tickets.empty?
+                  - unless @event.tickets.empty? || @event.end_at<DateTime.now
                     - if user_signed_in?
                       - if @attendee.nil?
                         = link_to t(:event_registration), attendees_path(attendee: {ticket_id: @event.tickets.first.id}), method: :post , class: "btn btn-success btn-lg btn-block", data: {confirm: t(:sure_your_want_to_attend_this_event)},id: "Event_Registration", remote: true

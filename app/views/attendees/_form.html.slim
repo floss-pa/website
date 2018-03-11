@@ -6,10 +6,11 @@
         - @attendee.errors.full_messages.each do |message|
           li = message
 
-  .field
-    = f.label :ticket
-    = f.text_field :ticket
-  .field
-    = f.label :user
-    = f.text_field :user
-  .actions = f.submit
+  div class="form-group row"
+    = f.label t(:ticket)
+    = f.select :ticket_id, Ticket.all.collect {|c| [c.id]}
+  div class="form-group row"
+    = f.label t(:user)
+    = f.select :user_id, User.all.collect {|c| [c.name,c.id]}
+  div class="form-group row"
+    = f.submit t(:save), class: "btn btn-primary"

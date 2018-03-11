@@ -6,11 +6,7 @@ div class="clearfix"
             = t(:events)
             | :
       div class="row"
-          - count=0
           - @events.each do |event|
-           - count+=1
-           - unless count.to_i.even?
-             div class="row"
            div class="col-lg-6"
              div class="list-group"
               = link_to event_path(event), class: "list-group-item list-group-item-action flex-column align-items-start" do
@@ -43,8 +39,5 @@ div class="clearfix"
                       = event.user.name
                     p
                       = strip_tags(event.description).truncate(150)
-
-
-
       div class="row text-center"
         = will_paginate @events, renderer: BootstrapPagination::Rails

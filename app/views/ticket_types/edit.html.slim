@@ -1,8 +1,18 @@
-h1 Editing ticket_type
-
-== render 'form'
-
-=> link_to 'Show', @ticket_type
-'|
-=< link_to 'Back', ticket_types_path
+div class="clearfix"
+  div class="container"
+    div class="page-header"
+      div class="row"
+          h1
+            = t(:events)
+            | :
+      div class="row"
+        h1
+          = t(:edit)
+          = t(:ticket_type)
+      div class="row"
+        == render 'form'
+      div class="row"
+        => link_to 'Show', @ticket_type
+        '|
+        =< link_to 'Back', ticket_types_path
 

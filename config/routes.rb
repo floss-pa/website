@@ -12,7 +12,9 @@ Rails.application.routes.draw do
   get 'news/:id/*anything' => 'news#show', as: 'news_custom'
   get 'communities/:id/*anything' => 'communities#show', as: 'community_custom'
   get 'user/:id/*anything' => 'user#show', as: 'user_custom'
-  resources :events
+  resources :events do
+    resources :attendees, only: [:index]
+  end
   resources :user, only: [:show]
   resources :communities
   resources :carousels

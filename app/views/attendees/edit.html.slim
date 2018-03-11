@@ -1,8 +1,14 @@
-h1 Editing attendee
-
-== render 'form'
-
-=> link_to 'Show', @attendee
-'|
-=< link_to 'Back', attendees_path
+div class="clearfix"
+  div class="container"
+    div class="page-header"
+      div class="row"
+          h1
+            = t(:attendee)
+            | :
+      div class="row"
+        == render 'form'
+      div class="row"
+        => link_to t(:show), @attendee
+        '|
+        =< link_to t(:back), attendees_path
 

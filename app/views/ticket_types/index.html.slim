@@ -1,21 +1,25 @@
-h1 Listing ticket_types
-
-table
-  thead
-    tr
-      th Name
-      th
-      th
-      th
-
-  tbody
-    - @ticket_types.each do |ticket_type|
-      tr
-        td = ticket_type.name
-        td = link_to 'Show', ticket_type
-        td = link_to 'Edit', edit_ticket_type_path(ticket_type)
-        td = link_to 'Destroy', ticket_type, data: { confirm: 'Are you sure?' }, method: :delete
-
-br
-
-= link_to 'New Ticket type', new_ticket_type_path
+div class="clearfix"
+  div class="container"
+    div class="page-header"
+      div class="row"
+          h1
+            = t(:ticket_types)
+            | :
+      div class="row"
+        table
+        thead
+          tr
+            th Name
+            th
+            th
+            th
+        tbody
+          - @ticket_types.each do |ticket_type|
+            tr
+              td = ticket_type.name
+              td = link_to t(:show), ticket_type
+              td = link_to t(:edit), edit_ticket_type_path(ticket_type)
+              td = link_to t(:destroy), ticket_type, data: { confirm: 'are_you_sure' }, method: :delete
+        br
+      div class="row"
+      = link_to 'New Ticket type', new_ticket_type_path

@@ -5,25 +5,26 @@ div class="clearfix"
           h1
             = t(:attendees)
             | :
+          = t(:to_your_event)
+          | : &nbsp;
+          = @event.title
       div class="row"
         - count=0
         table
           thead
             tr
               th
-                = t(:ticket)
-              th
-               | &nbsp;
-              th
                 = t(:attendee)
               th
+              th
+                = t(:join)
           tbody
             - @attendees.each do |attendee|
               tr
                 td
-                  = attendee.event.title
-                td
-                 | &nbsp;
-                td
                   = attendee.user.name
+                td
+                  | &nbsp;
+                td
+                  = attendee.created_at
       br

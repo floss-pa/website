@@ -6,7 +6,12 @@ class AttendeesController < ApplicationController
   # GET /attendees
   # GET /attendees.json
   def index
-    @attendees = Attendee.all
+    @event= Event.find(params[:event_id])
+    if current_user.id.to_i===@event.user_id.to_i
+      @attendees = @event.attendees.paginate(:page => params[:page],:per_page =>9 ).order('created_at DESC')
+    else
+      redirect_back(fallback_location: root_path, status: 403)
+    end
   end
 
   # GET /attendees/1
@@ -17,7 +22,6 @@ class AttendeesController < ApplicationController
     rescue RQRCode::QRCodeRunTimeError => e
       logger.info "Manage qr error show #{e.inspect}"
     end
-  
     respond_to do |format|
       format.html  { render :layout => 'no_header' }
       format.js
@@ -27,11 +31,20 @@ class AttendeesController < ApplicationController
 
   # GET /attendees/new
   def new
-    @attendee = Attendee.new
+    if current_user.has_role? :admin
+      logger.info 'loaded'
+      @attendee = Attendee.new
+    else
+      logger.info 'not loaded'
+      redirect_back(fallback_location: root_path, status: 403)
+    end
   end
 
   # GET /attendees/1/edit
   def edit
+    unless current_user.has_role? :admin
+      redirect_back(fallback_location: root_path, status: 403)
+    end
   end
 
   # POST /attendees

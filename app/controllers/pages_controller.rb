@@ -1,6 +1,7 @@
 class PagesController < ApplicationController
-  before_action :authenticate_user!
+  skip_before_action :authenticate_user!, only: [:show]
   before_action :set_page, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource
 
   # GET /pages
   # GET /pages.json

@@ -6,16 +6,17 @@
         - @ticket.errors.full_messages.each do |message|
           li = message
 
-  .field
-    = f.label :event
-    = f.text_field :event
-  .field
-    = f.label :amount
-    = f.number_field :amount
-  .field
-    = f.label :ticket_type
-    = f.text_field :ticket_type
-  .field
-    = f.label :token
-    = f.text_field :token
-  .actions = f.submit
+  div class="form-group row"
+    = f.label t(:event), class: "form-input-label"
+    = f.text_field :event, Event.all.collect {|c| [c.title,c.id]}, require: true,class: "form-control"
+  div class="form-group row"
+    = f.label t(:amount), class: "form-input-label"
+    = f.number_field :amount, class: "form-control"
+  div class="form-group row"
+    = f.label t(:ticket_type), class: "form-input-label"
+    = f.select :ticket_type_id, TicketType.all.collect {|c| [c.name,c.id]}, require: true, class: "form-control"
+  div class="form-group row"
+    = f.label t(:token), class: "form-input-label"
+    = f.text_field :token, require: true, class: "form-control"
+  div class="form-group row"
+    = f.submit t(:save), class: "btn btn-primary"

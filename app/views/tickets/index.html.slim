@@ -1,27 +1,33 @@
-h1 Listing tickets
-
-table
-  thead
-    tr
-      th Event
-      th Amount
-      th Ticket type
-      th Token
-      th
-      th
-      th
-
-  tbody
-    - @tickets.each do |ticket|
-      tr
-        td = ticket.event
-        td = ticket.amount
-        td = ticket.ticket_type
-        td = ticket.token
-        td = link_to 'Show', ticket
-        td = link_to 'Edit', edit_ticket_path(ticket)
-        td = link_to 'Destroy', ticket, data: { confirm: 'Are you sure?' }, method: :delete
-
-br
-
-= link_to 'New Ticket', new_ticket_path
+div class="clearfix"
+  div class="container"
+    div class="page-header"
+      div class="row"
+          h1
+            = t(:tickets)
+            | :
+      div class="row"
+        table
+          thead
+            tr
+              th Event
+              th Amount
+              th Ticket type
+              th Token
+              th
+              th
+              th
+        
+          tbody
+            - @tickets.each do |ticket|
+              tr
+                td = link_to ticket.event.title, event_path(ticket.event)
+                td = ticket.amount
+                td = ticket.ticket_type.name
+                td = ticket.token
+                td = link_to t(:show), ticket
+                td = link_to t(:edit), edit_ticket_path(ticket)
+                td = link_to t(:destroy), ticket, data: { confirm: t(:are_you_sure) }, method: :delete
+        
+        br
+      div class="row"
+        = link_to t(:new) + t(:ticket), new_ticket_path

@@ -1,10 +1,13 @@
 class TicketsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :is_admin
   before_action :set_ticket, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource
 
   # GET /tickets
   # GET /tickets.json
   def index
-    @tickets = Ticket.all
+      @tickets = Ticket.all
   end
 
   # GET /tickets/1
@@ -70,6 +73,12 @@ class TicketsController < ApplicationController
         params[:id]=params[:id].split('-').last
       end
       @ticket = Ticket.find(params[:id])
+    end
+
+    def is_admin
+      unless current_user.has_role? :admin
+        redirect_back(fallback_location: root_path, status: 403)
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

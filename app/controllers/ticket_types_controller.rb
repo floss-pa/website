@@ -1,5 +1,7 @@
 class TicketTypesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_ticket_type, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource
 
   # GET /ticket_types
   # GET /ticket_types.json
