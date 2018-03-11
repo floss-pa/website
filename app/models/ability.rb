@@ -33,6 +33,9 @@ class Ability
     return unless user.present?
     can :manage, News, user_id: user.id
     can :manage, Community, user_id: user.id
+    can :manage, Event, user_id: user.id
+    can [:read,:create], Ticket, user_id: user.id
+    can [:read,:create], Attendee, user_id: user.id
     can :manage, :all if user.has_role? :admin
   end
 end

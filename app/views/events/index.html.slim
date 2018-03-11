@@ -1,0 +1,43 @@
+div class="clearfix"
+  div class="container"
+    div class="page-header"
+      div class="row"
+          h1
+            = t(:events)
+            | :
+      div class="row"
+          - @events.each do |event|
+           div class="col-lg-6"
+             div class="list-group"
+              = link_to event_path(event), class: "list-group-item list-group-item-action flex-column align-items-start" do
+                div class="d-flex w-100 justify-content-between"
+                  h3 class="mb-1"
+                    = event.title.truncate(46)
+                  small class="text-muted "
+                    / time_ago_in_words(event.created_at)
+                div class="row"
+                  div class="col-lg-4"
+                    div class="text-center"
+                      h1 class="display-2"
+                        = event.start_at.strftime("%b")
+                      h2 class="display-3 text-danger"
+                        = event.start_at.strftime("%d")
+                      h3 class="display-4"
+                        = event.start_at.strftime("%Y")
+                  div class="col-lg-8"
+                    = image_tag event.image.url(:project), class: ""
+                  div class="col-lg-12"
+                    p
+                      strong
+                        = t(:location)
+                        | :&nbsp;
+                      = event.location
+                    p
+                      strong
+                       =  t(:host)
+                       | :&nbsp;
+                      = event.user.name
+                    p
+                      = strip_tags(event.description).truncate(150)
+      div class="row text-center"
+        = will_paginate @events, renderer: BootstrapPagination::Rails

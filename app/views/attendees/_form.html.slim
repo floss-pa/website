@@ -1,0 +1,16 @@
+= form_for @attendee do |f|
+  - if @attendee.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@attendee.errors.count, "error")} prohibited this attendee from being saved:"
+      ul
+        - @attendee.errors.full_messages.each do |message|
+          li = message
+
+  div class="form-group row"
+    = f.label t(:ticket)
+    = f.select :ticket_id, Ticket.all.collect {|c| [c.id]}
+  div class="form-group row"
+    = f.label t(:user)
+    = f.select :user_id, User.all.collect {|c| [c.name,c.id]}
+  div class="form-group row"
+    = f.submit t(:save), class: "btn btn-primary"

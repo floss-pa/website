@@ -1,0 +1,34 @@
+div class="clearfix"
+  div class="container"
+    div class="page-header"
+      div class="row"
+          h1
+            = t(:ticket)
+            | :
+      div class="row"
+        p#notice = notice
+      div class="row"
+        p
+          strong
+            = t(:event)
+            | : &nbsp;
+          = @ticket.event
+        p
+          strong
+            = t(:amount)
+            | : &nbsp;
+          = @ticket.amount
+        p
+          strong
+            = t(:ticket_type)
+            | : &nbsp;
+          = @ticket.ticket_type
+        p
+          strong
+            = t(:token)
+            | : &nbsp;
+          = @ticket.token
+      div class="row"
+        => link_to 'Edit', edit_ticket_path(@ticket)
+        '|
+        =< link_to 'Back', tickets_path

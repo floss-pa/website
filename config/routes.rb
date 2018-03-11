@@ -1,11 +1,20 @@
 Rails.application.routes.draw do
 
+  resources :attendees
+  resources :tickets
+  resources :ticket_types
+  get "events/(:date)" => "events#index",
+      :constraints => { :date => /\d{4}-\d{2}-\d{2}/ },
+      :as => "events_date"
   get 'privacy' => 'home#privacy',  :defaults => { :id => '2' }, as: 'privacy'
   get 'news/:id/edit' => 'news#edit'
   get 'communities/:id/edit' => 'communities#edit'
   get 'news/:id/*anything' => 'news#show', as: 'news_custom'
   get 'communities/:id/*anything' => 'communities#show', as: 'community_custom'
   get 'user/:id/*anything' => 'user#show', as: 'user_custom'
+  resources :events do
+    resources :attendees, only: [:index]
+  end
   resources :user, only: [:show]
   resources :communities
   resources :carousels

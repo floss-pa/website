@@ -18,7 +18,7 @@ div class="container"
                       = devise_error_messages!
                   div class="form-group row"
                     = f.label t(:name), class: "form-input-label"
-                    = f.text_field :name, required: true, minlength: "6", maxlength: "50",class: "form-control"
+                    = f.text_field :name, required: true, minlength: "8", maxlength: "50",class: "form-control"
                   div class="form-group row"
                     p
                       = image_tag current_user.avatar.url(:medium), class: "img-fluid img-circle"

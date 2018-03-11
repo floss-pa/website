@@ -1,0 +1,15 @@
+doctype html
+html 
+  head
+    = csrf_meta_tags
+    = stylesheet_link_tag "application", media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag "application", "data-turbolinks-track": 'reload'
+    = favicon_link_tag 'favicon.ico'
+    - set_meta_tags alternate: { "es" => "https://floss-pa.net/" ,"en" => "https://floss-pa.net/en" }, publisher: "https://plus.google.com/communities/113233271634131928687",canonical: "https://floss-pa.net",title: t(:default_site_title), description: t(:default_description)
+    - set_meta_tags og: {type: "website",title: "#{t(:default_site_title)} ",description: t(:default_description),locale: params[:locale],site_name: "Floss-pa",image: "https://floss-pa/apple-touch-icon-152x152.png"}
+
+    = display_meta_tags
+
+  body id="home"
+
+    == yield
