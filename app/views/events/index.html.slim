@@ -31,7 +31,7 @@ div class="clearfix"
                       strong
                         = t(:location)
                         | :&nbsp;
-                      = event.location
+                      = event.location.truncate(46)
                     p
                       strong
                        =  t(:host)
