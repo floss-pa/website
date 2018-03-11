@@ -34,6 +34,8 @@ class Ability
     can :manage, News, user_id: user.id
     can :manage, Community, user_id: user.id
     can :manage, Event, user_id: user.id
+    can :manage, Ticket, user_id: user.id
+    can :manage, Attendee, user_id: user.id
     can :manage, :all if user.has_role? :admin
   end
 end

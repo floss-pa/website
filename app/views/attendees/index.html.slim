@@ -1,0 +1,29 @@
+div class="clearfix"
+  div class="container"
+    div class="page-header"
+      div class="row"
+          h1
+            = t(:attendees)
+            | :
+      div class="row"
+        - count=0
+        table
+          thead
+            tr
+              th
+                = t(:ticket)
+              th
+               | &nbsp;
+              th
+                = t(:attendee)
+              th
+          tbody
+            - @attendees.each do |attendee|
+              tr
+                td
+                  = attendee.event.title
+                td
+                 | &nbsp;
+                td
+                  = attendee.user.name
+      br

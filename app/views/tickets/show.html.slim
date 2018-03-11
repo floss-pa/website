@@ -1,0 +1,18 @@
+p#notice = notice
+
+p
+  strong Event:
+  = @ticket.event
+p
+  strong Amount:
+  = @ticket.amount
+p
+  strong Ticket type:
+  = @ticket.ticket_type
+p
+  strong Token:
+  = @ticket.token
+
+=> link_to 'Edit', edit_ticket_path(@ticket)
+'|
+=< link_to 'Back', tickets_path

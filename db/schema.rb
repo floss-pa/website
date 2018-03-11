@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180226051349) do
+ActiveRecord::Schema.define(version: 20180307033157) do
 
   create_table "assignments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "user_id"
@@ -19,6 +19,15 @@ ActiveRecord::Schema.define(version: 20180226051349) do
     t.datetime "updated_at", null: false
     t.index ["role_id"], name: "index_assignments_on_role_id"
     t.index ["user_id"], name: "index_assignments_on_user_id"
+  end
+
+  create_table "attendees", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "ticket_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ticket_id"], name: "index_attendees_on_ticket_id"
+    t.index ["user_id"], name: "index_attendees_on_user_id"
   end
 
   create_table "bootsy_image_galleries", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -165,6 +174,24 @@ ActiveRecord::Schema.define(version: 20180226051349) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "ticket_types", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tickets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "event_id"
+    t.integer "amount"
+    t.bigint "ticket_type_id"
+    t.string "token", limit: 50
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_tickets_on_event_id"
+    t.index ["ticket_type_id"], name: "index_tickets_on_ticket_type_id"
+    t.index ["token"], name: "index_tickets_on_token", unique: true
+  end
+
   create_table "tmp_news", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "mail", limit: 64, default: "", collation: "utf8_general_ci"
     t.string "language", limit: 12, default: "", null: false, collation: "utf8_general_ci"
@@ -217,6 +244,8 @@ ActiveRecord::Schema.define(version: 20180226051349) do
 
   add_foreign_key "assignments", "roles"
   add_foreign_key "assignments", "users"
+  add_foreign_key "attendees", "tickets"
+  add_foreign_key "attendees", "users"
   add_foreign_key "carousels", "pages"
   add_foreign_key "carousels", "users"
   add_foreign_key "communities", "users"
@@ -230,4 +259,6 @@ ActiveRecord::Schema.define(version: 20180226051349) do
   add_foreign_key "news", "users"
   add_foreign_key "news_contents", "news"
   add_foreign_key "pages", "users"
+  add_foreign_key "tickets", "events"
+  add_foreign_key "tickets", "ticket_types"
 end

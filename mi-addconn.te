@@ -1,0 +1,18 @@
+
+module mi-addconn 1.0;
+
+require {
+	type var_run_t;
+	type l2tpd_var_run_t;
+	type ipsec_t;
+	class file { getattr ioctl open read };
+}
+
+#============= ipsec_t ==============
+
+#!!!! This avc is allowed in the current policy
+allow ipsec_t l2tpd_var_run_t:file { getattr ioctl open read };
+
+#!!!! This avc is allowed in the current policy
+allow ipsec_t var_run_t:file read;
+allow ipsec_t var_run_t:file open;

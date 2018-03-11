@@ -97,4 +97,6 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
   config.exception_handler = { layouts: { }}
+  Rails.application.routes.default_url_options[:host]= ENV["HTTP_HOST"] || "localhost"
+  Rails.application.routes.default_url_options[:port]= ENV["PORT"] || 3000
 end

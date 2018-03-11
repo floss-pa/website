@@ -1,0 +1,69 @@
+div class="clearfix"
+  div class="container"
+    div class="page-header"
+      | &nbsp;
+      div class="row"
+        div class="list-group"
+          div class="list-group-item list-group-item-action flex-column align-items-start"
+            div class="d-flex w-100 justify-content-between"
+              div class="row"
+                div class="col-lg-12"
+                  div class="col-lg-1"
+                    div class="text-center"
+                      h1 class="display-2"
+                        = @attendee.event.start_at.strftime("%b")
+                      h2 class="display-3 text-danger"
+                        = @attendee.event.start_at.strftime("%d")
+                      h1 class="display-3"
+                        = @attendee.event.start_at.strftime("%Y")
+                  div class="col-lg-9"
+                    = image_tag @attendee.event.image.url(:ticket), class: "figure-img img-fluid rounded"
+                  div class="col-lg-1"
+                     css:
+                       #qr table {
+                         border-width: 0;
+                         border-style: none;
+                         border-color: #0000ff;
+                         border-collapse: collapse;
+                         }
+                       #qr td {
+                         border-left: solid 5px #000;
+                         padding: 0; 
+                         margin: 0; 
+                         width: 0px; 
+                         height: 5px; 
+                        }
+                       #qr td.black { border-color: #000; }
+                       #qr td.white { border-color: #fff; }
+                  div id="qr"
+                    =  raw @qr.as_html
+            div class="row"
+              p
+                strong
+                  | &nbsp;
+                  = t(:attendee)
+                  | : &nbsp;
+                = @attendee.user.name
+              p
+                strong
+                  | &nbsp;
+                  = t(:location)
+                  | : &nbsp;
+                = @attendee.event.location
+              p
+                strong
+                  | &nbsp;
+                  = t(:from)
+                  | : &nbsp;
+                = @attendee.event.start_at.strftime("%I:%M %p")
+                  | &nbsp;
+                strong
+                  | &nbsp;
+                  = t(:until)
+                  | : &nbsp;
+                = @attendee.event.end_at.strftime("%I:%M %p") 
+      div class="row"
+        p
+         = sanitize(@attendee.event.description)
+
+             

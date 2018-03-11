@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  resources :attendees
+  resources :tickets
+  resources :ticket_types
   get "events/(:date)" => "events#index",
       :constraints => { :date => /\d{4}-\d{2}-\d{2}/ },
       :as => "events_date"

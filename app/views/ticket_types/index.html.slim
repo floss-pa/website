@@ -1,0 +1,21 @@
+h1 Listing ticket_types
+
+table
+  thead
+    tr
+      th Name
+      th
+      th
+      th
+
+  tbody
+    - @ticket_types.each do |ticket_type|
+      tr
+        td = ticket_type.name
+        td = link_to 'Show', ticket_type
+        td = link_to 'Edit', edit_ticket_type_path(ticket_type)
+        td = link_to 'Destroy', ticket_type, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Ticket type', new_ticket_type_path

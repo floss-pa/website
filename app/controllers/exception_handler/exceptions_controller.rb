@@ -41,6 +41,10 @@ module ExceptionHandler
 
     def show
       respond_with @exception, status: @exception.status
+      respond_to do |format|
+       format.html
+       format.js
+      end
     end
 
     ##################################

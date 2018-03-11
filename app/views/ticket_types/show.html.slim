@@ -1,0 +1,9 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @ticket_type.name
+
+=> link_to 'Edit', edit_ticket_type_path(@ticket_type)
+'|
+=< link_to 'Back', ticket_types_path
