@@ -12,7 +12,12 @@ class AttendeesController < ApplicationController
   # GET /attendees/1
   # GET /attendees/1.json
   def show
-    @qr = RQRCode::QRCode.new( attendee_url(@attendee), :size => 4, :level => :h )
+    begin
+      @qr = RQRCode::QRCode.new( attendee_url(@attendee.id), :size => 5, :level => :h )
+    rescue RQRCode::QRCodeRunTimeError => e
+      logger.info "Manage qr error show #{e.inspect}"
+    end
+  
     respond_to do |format|
       format.html  { render :layout => 'no_header' }
       format.js
@@ -36,7 +41,11 @@ class AttendeesController < ApplicationController
 
     respond_to do |format|
       if @attendee.save
-          @qr = RQRCode::QRCode.new( attendee_url(@attendee), :size => 4, :level => :h )
+        begin
+          @qr = RQRCode::QRCode.new( attendee_url(@attendee.id), :size => 5, :level => :h )
+        rescue RQRCode::QRCodeRunTimeError => e
+          logger.info "Manage qr error in create #{e.inspect}"
+        end
         format.html { redirect_to @attendee, notice: 'Attendee was successfully created.' }
         format.json { render :show, status: :created, location: @attendee }
         format.js
