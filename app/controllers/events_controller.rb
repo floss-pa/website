@@ -6,7 +6,14 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-    @events = Event.paginate(:page => params[:page],:per_page =>8 ).where("publish=true ", params[:id]).order('start_at DESC')
+     if Date.valid_date? params[:year].to_i, params[:month].to_i, params[:day].to_i
+      event_date = Date.parse("#{params[:year]}.#{params[:month]}.#{params[:day]}")
+     end
+     unless event_date.nil?
+      @events = Event.paginate(:page => params[:page],:per_page => 8).where("publish=true and date(start_at)=?",event_date).order('start_at Desc')
+     else
+     @events = Event.paginate(:page => params[:page],:per_page =>8 ).where("publish=true ", params[:id]).order('start_at DESC')
+    end
   end
 
   # GET /events/1

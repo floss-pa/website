@@ -3,9 +3,8 @@ Rails.application.routes.draw do
   resources :attendees
   resources :tickets
   resources :ticket_types
-  get "events/(:date)" => "events#index",
-      :constraints => { :date => /\d{4}-\d{2}-\d{2}/ },
-      :as => "events_date"
+  get "event/:year/:month/:day" => "events#index", constraints: { year: /\d{4}/, month: /\d{2}/, day: /\d{2}/ }
+  get "event/:year/:month/:day/*anything" => "events#index", constraints: { year: /\d{4}/, month: /\d{2}/, day: /\d{2}/ }
   get 'privacy' => 'home#privacy',  :defaults => { :id => '2' }, as: 'privacy'
   get 'news/:id/edit' => 'news#edit'
   get 'communities/:id/edit' => 'communities#edit'
