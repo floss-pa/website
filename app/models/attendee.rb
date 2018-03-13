@@ -7,7 +7,8 @@ class Attendee < ApplicationRecord
 
   def send_ticket
     unless self.user.email.include?('facebook')
-      TicketMailer.new_ticket(self.id).deliver
+      cal=self.event.create_calendar_entry
+      TicketMailer.new_ticket(self.id,cal).deliver
     end
   end
 end

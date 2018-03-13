@@ -30,6 +30,7 @@ class Ability
     # https://github.com/CanCanCommunity/cancancan/wiki/Defining-Abilities
     can :read, :all
     #can :read, :home, :all
+    can :calendar_download, Event
     return unless user.present?
     can :manage, News, user_id: user.id
     can :manage, Community, user_id: user.id

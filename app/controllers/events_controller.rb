@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index,:show]
-  before_action :set_event, only: [:show, :edit, :update, :destroy]
+  skip_before_action :authenticate_user!, only: [:index,:show,:calendar_download]
+  before_action :set_event, only: [:show, :edit, :update, :destroy, :download]
+  skip_authorization_check :only => [:calendar_download]
   load_and_authorize_resource
 
   # GET /events
@@ -73,6 +74,12 @@ class EventsController < ApplicationController
       format.html { redirect_to events_url, notice: 'Event was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def calendar_download
+    cal = @event.create_calendar_entry
+    filename = 'floss-pa-event.ics'
+    send_data cal.to_ical, type: 'text/calendar', disposition: 'attachment', filename: filename
   end
 
   private
