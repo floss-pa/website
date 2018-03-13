@@ -71,6 +71,8 @@ div class="clearfix"
                       = t(:until)
                       | : &nbsp;
                     = @event.end_at.strftime("%I:%M %p")
+                  p
+                    = link_to t(:add_to_calendar), event_calendar_download_path(@event)
                   - unless @event.ticket_url.nil?
                     - unless @event.ticket_url.empty?
                       p

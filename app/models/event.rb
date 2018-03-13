@@ -14,4 +14,19 @@ class Event < ApplicationRecord
            default_url: ->(attachment) { ActionController::Base.helpers.asset_path("event_default.png") }
   validates_attachment_content_type :image, :content_type => /^image\/(png|gif|jpeg|jpg)/
   accepts_nested_attributes_for :tickets
+
+  def create_calendar_entry
+    cal = Icalendar::Calendar.new
+      cal.timezone do |t|
+        t.tzid = "America/Panama"
+      end
+      cal.event do |e|
+        e.dtstart = Icalendar::Values::DateTime.new(self.start_at)
+        e.dtend = Icalendar::Values::DateTime.new(self.end_at)
+        e.summary = self.title
+        e.description = self.description
+        e.ip_class = "PRIVATE"
+      end
+      cal
+  end
 end
