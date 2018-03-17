@@ -21,4 +21,5 @@
 //= require bootstrap-timepicker
 //= require bootsy
 //= require social-share-button
+//= require leaflet
 //= require_tree .
