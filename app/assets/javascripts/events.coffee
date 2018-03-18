@@ -7,8 +7,7 @@ $(document).on 'turbolinks:load', ->
   event_longitude = $('#event_longitude').val() || "-79.521593"
   elementExists = document.getElementById('show_map')
   if !elementExists?
-   console.log('found')
-   EventMarker = "Event_marker": L.marker([
+   EventMarker = L.marker([
      event_latitude
      event_longitude
    ],
