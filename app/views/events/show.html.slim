@@ -97,9 +97,7 @@ div class="clearfix"
       div class="row"
         div class="col-lg-12"
           - unless @event.latitude.nil?
-            css:
-              #map { height: 250px; }
-            = map(center: {latlng: ["#{@event.latitude}", "#{@event.longitude}"],zoom: 14}, markers: [{latlng: ["#{@event.latitude}", "#{@event.longitude}"]}])
+            = map(container_id: "show_map",center: {latlng: ["#{@event.latitude}", "#{@event.longitude}"],zoom: 14}, markers: [{latlng: ["#{@event.latitude}", "#{@event.longitude}"]}])
       div class="row"
         | &nbsp;
       div class="row"

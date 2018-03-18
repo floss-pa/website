@@ -13,25 +13,6 @@
       | * &nbsp;
       = t(:required)
   div class="form-group row"
-    = f.label t(:image), class: "form-input-label"
-    = f.file_field :image, class: "form-control-file"
-    = t(:event_image_information)
-  div class="form-group row"
-    = f.label t(:location), class: "form-input-label"
-    = f.text_field :location, placeholder: t(:place_where_your_event), required: true, minimal: 10, class: "form-control"
-    div class="text-warning"
-      | * &nbsp;
-      = t(:required)
-    div class="text-info"
-      = t(:location_instruction)
-  div class="form-group row"
-    = f.hidden_field :latitude, class: "form-control"
-    = f.hidden_field :longitude, class: "form-control"
-    = map(center: {latlng: [8.984062, -79.521593],zoom: 14})
-  div class="form-group row"
-    = f.label t(:frecuency), class: "form-input-label"
-    = f.text_field :frecuency, class: "form-control"
-  div class="form-group row"
     = f.label t(:start_at), class: "control-label"
     div class="form-group"
       div class="input-group col-lg-5"
@@ -63,6 +44,25 @@
     div class="text-warning"
       | * &nbsp;
       = t(:required)
+  div class="form-group row"
+    = f.label t(:image), class: "form-input-label"
+    = f.file_field :image, class: "form-control-file"
+    = t(:event_image_information)
+  div class="form-group row"
+    = f.label t(:location), class: "form-input-label"
+    = f.text_field :location, placeholder: t(:place_where_your_event), required: true, minimal: 10, class: "form-control"
+    div class="text-warning"
+      | * &nbsp;
+      = t(:required)
+    div class="text-info"
+      = t(:location_instruction)
+  div class="form-group row"
+    = f.hidden_field :latitude, class: "form-control"
+    = f.hidden_field :longitude, class: "form-control"
+    = map(center: {latlng: [8.984062, -79.521593],zoom: 14})
+  div class="form-group row"
+    = f.label t(:frecuency), class: "form-input-label"
+    = f.text_field :frecuency, class: "form-control"
   div class="form-group row"
     = f.label t(:description), required: true, class: "form-input-label"
     = f.bootsy_area :description,rows: 20, class: "form-control"
