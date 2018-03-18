@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180307033157) do
+ActiveRecord::Schema.define(version: 20180315043734) do
 
   create_table "assignments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "user_id"
@@ -109,6 +109,8 @@ ActiveRecord::Schema.define(version: 20180307033157) do
     t.string "image_content_type"
     t.integer "image_file_size"
     t.datetime "image_updated_at"
+    t.float "latitude", limit: 24
+    t.float "longitude", limit: 24
     t.index ["community_id"], name: "index_events_on_community_id"
     t.index ["user_id"], name: "index_events_on_user_id"
   end
@@ -190,6 +192,13 @@ ActiveRecord::Schema.define(version: 20180307033157) do
     t.index ["event_id"], name: "index_tickets_on_event_id"
     t.index ["ticket_type_id"], name: "index_tickets_on_ticket_type_id"
     t.index ["token"], name: "index_tickets_on_token", unique: true
+  end
+
+  create_table "tmp_event", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.datetime "event_start", null: false
+    t.datetime "event_end", null: false
+    t.string "title", default: "", null: false, collation: "utf8_general_ci"
+    t.text "body", limit: 4294967295, null: false, collation: "utf8_general_ci"
   end
 
   create_table "tmp_news", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
