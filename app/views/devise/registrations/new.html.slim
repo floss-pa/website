@@ -22,8 +22,10 @@ div class="container"
                       = t(:email)
                   div class="form-group row"
                     = f.label t(:name), class: "form-input-label"
-                    = f.text_field :name, required: true, minlength: "6", maxlength: "50", class: "form-control"
-       
+                    = f.text_field :name, required: true, minlength: "8", maxlength: "50", class: "form-control"
+                  div class="form-group row"
+                    = f.label t(:photo), class: "form-input-label"
+                    = f.file_field :avatar, class: "form-control-file"
                   div class="form-group row"
                     = f.label t(:email), class: "form-input-label"
                     = f.email_field :email, autofocus: true, autocomplete: "email", required: true, "data-parsley-type": "email",class: "form-control"

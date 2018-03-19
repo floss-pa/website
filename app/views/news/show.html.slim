@@ -31,7 +31,7 @@ div class="container"
                p class="lead"
                  = sanitize @news.news_content.content
               div class="col-lg-10"
-                = social_share_button_tag(@news.title,desc: @news.news_content.content)
+                = social_share_button_tag(@news.title,url: "#{url_for news_url(@news)}",desc: strip_tags(@news.news_content.content))
               div class="col-lg-2"
                 - if can? :update, @news
                  => link_to 'Edit', edit_news_path(@news)

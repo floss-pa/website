@@ -11,6 +11,7 @@ div class="container"
     ul class="nav navbar-nav"
       li = link_to t(:news), news_index_path
       li = link_to t(:communities), communities_path
+      li = link_to t(:events), events_path
       li = link_to "Wiki", "https://wiki.floss-pa.net/",{:target=>"_blank"}
 
     ul class="nav navbar-nav navbar-right"
@@ -43,8 +44,9 @@ div class="container"
           ul class="dropdown-menu" aria-labelledby="user"
             / li = link_to t(:profile), user_path(current_user)
             / li = link_to t(:edit) + ' ' + t(:profile), edit_user_path(current_user)
-            li = link_to t(:add_news), new_news_path 
-            li = link_to t(:add_community), new_community_path 
+            li = link_to t(:add_news), new_news_path
+            li = link_to t(:add_community), new_community_path
+            li = link_to t(:add_event), new_event_path
             li = link_to t(:account), edit_user_registration_path
             li = link_to t(:sign_out), destroy_user_session_path, {:method=>"delete", :id=>"logout"}
 

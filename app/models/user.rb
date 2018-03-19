@@ -6,6 +6,8 @@ class User < ApplicationRecord
   has_many :carousels
   has_many :communities
   has_many :members
+  has_many :events
+  has_many :attendees
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   TEMP_EMAIL_PREFIX = 'change@me'
@@ -15,8 +17,8 @@ class User < ApplicationRecord
          :confirmable, :omniauthable
   validates_format_of :email, :without => TEMP_EMAIL_REGEX, on: :update
   validates :name,
-       :presence => true,
-       :format => {:with=> /\A[\p{Word}\p{space}]*\z/, :message=> I18n.t(:no_special_characters) }
+       :presence => true #,
+  #     :format => {:with=> /\A[\p{Word}\p{space}]*\z/, :message=> I18n.t(:no_special_characters) }
   has_attached_file :avatar,
            styles: { :project=>"320x205",:medium => "200x200>", :thumb => "40x40>" },
            default_url: ->(attachment) { ActionController::Base.helpers.asset_path("user_avatar.png") }

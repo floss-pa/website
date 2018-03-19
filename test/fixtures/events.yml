@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  title: MyString
+  image: MyString
+  location: MyString
+  frecuency: MyString
+  start_date: 2018-02-25 23:15:08
+  end_date: 2018-02-25 23:15:08
+  description: MyText
+  keyworkds: MyString
+  ticket_url: MyString
+  community: one
+  organizer: MyString
+  publish: false
+
+two:
+  user: two
+  title: MyString
+  image: MyString
+  location: MyString
+  frecuency: MyString
+  start_date: 2018-02-25 23:15:08
+  end_date: 2018-02-25 23:15:08
+  description: MyText
+  keyworkds: MyString
+  ticket_url: MyString
+  community: two
+  organizer: MyString
+  publish: false

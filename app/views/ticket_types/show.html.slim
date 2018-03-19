@@ -1,0 +1,17 @@
+div class="clearfix"
+  div class="container"
+    div class="page-header"
+      div class="row"
+          h1
+            = t(:ticket_types)
+            | :
+      div class="row"
+        p#notice = notice
+        
+        p
+          strong Name:
+          = @ticket_type.name
+      div class="row"
+        => link_to t(:edit), edit_ticket_type_path(@ticket_type)
+        '|
+        =< link_to t(:back), ticket_types_path

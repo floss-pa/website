@@ -11,7 +11,7 @@ div class="container"
                   div class="card-header"
                   div class="card-body" style="text-align: center"
                     p class="card-text"
-                      = image_tag @user.avatar.url, class: "img-circle"
+                      = image_tag @user.avatar.url(:medium), class: "img-circle img-fluid"
                     h4 class="card-title"
                       = @user.name
               div class="col-lg-9"

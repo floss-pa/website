@@ -1,6 +1,8 @@
 class PagesController < ApplicationController
-  before_action :authenticate_user!
+  skip_before_action :authenticate_user!, only: [:show]
+  before_action :is_admin, only: [:index]
   before_action :set_page, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource
 
   # GET /pages
   # GET /pages.json
@@ -14,15 +16,15 @@ class PagesController < ApplicationController
    set_meta_tags og: {
                   url: "#{request.base_url + request.original_fullpath}",
                   type: "website",
-                  title: "#{@page.title} Software Libre y Codigo Abierto Panama",
-                  description: @page.content,
+                  title: "#{@page.title || "" } Software Libre y Codigo Abierto Panama",
+                  description: @page.content || "",
                   site_name: "floss-pa",
                   image: "https://floss-pa.net/images/logo.png}"
                   }
     set_meta_tags twitter: {
                 card:  "summary",
-                description: @page.content,
-                title: @page.title,
+                description: @page.content || "",
+                title: @page.title || "",
                 creator: "@flosspa",
                 image: {
                         _:       "https://floss-pa.net/images/logo.png}",
@@ -89,7 +91,11 @@ class PagesController < ApplicationController
     def set_page
       @page = Page.find(params[:id])
     end
-
+    def is_admin
+      unless current_user.has_role? :admin
+        redirect_back(fallback_location: root_path, status: 403, notice: t(:forbiden))
+      end
+    end
     # Never trust parameters from the scary internet, only allow the white list through.
     def page_params
       params.require(:page).permit(:user_id, :title, :language, :content, :carousel, :is_publish, :in_menu, :is_home,:keywords,:menu_label)

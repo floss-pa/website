@@ -1,0 +1,9 @@
+<% unless @attendee.id.nil? %>
+    $('#ticket_content').html('<%= j render(@attendee) %>');
+    $('#link_to_attendee').html('<%= link_to t(:print_version), attendee_path(@attendee), target: "_blank", class: "btn btn-primary"%>');
+    $('#view_your_ticket').html('<%= link_to t(:view_your_ticket), attendee_path(@attendee), remote: true, class: "btn btn-success btn-lg btn-block" %>');
+<% else %> 
+  $('#ticket_content').html('<p> ups </p> ');
+<% end %>
+  $('#Event_Registration').hide();
+  $('#show_ticket').modal('show');

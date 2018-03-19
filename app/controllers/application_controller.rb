@@ -1,8 +1,10 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
+  before_action :store_user_location!, if: :storable_location?
   before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :set_locale
+  before_action :set_paper_trail_whodunnit
 
   def ensure_signup_complete
     # Ensure we don't go into an infinite loop
@@ -29,5 +31,12 @@ class ApplicationController < ActionController::Base
   end
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name,:avatar])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:name,:avatar])
+  end
+  def storable_location?
+    request.get? && is_navigational_format? && !devise_controller? && !request.xhr?
+  end
+  def store_user_location!
+    store_location_for(:user, request.fullpath)
   end
 end

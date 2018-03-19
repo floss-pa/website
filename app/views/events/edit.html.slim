@@ -1,0 +1,20 @@
+div class="container"
+  div class="row"
+     div class="bs-docs-section clearfix"
+       div class="row"
+         div class="page-header"
+          div class="row"
+           div class="jumbotron"
+            div class="row"
+             div class="col-lg-12"
+               h2 class="display-3"
+                 = t(:edit)
+                 | &nbsp;
+                 = t(:event)
+
+               == render 'form'
+
+               => link_to t(:show), @event
+               '|
+               =< link_to t(:back), events_path
+

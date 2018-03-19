@@ -1,0 +1,22 @@
+= form_for @ticket do |f|
+  - if @ticket.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@ticket.errors.count, "error")} prohibited this ticket from being saved:"
+      ul
+        - @ticket.errors.full_messages.each do |message|
+          li = message
+
+  div class="form-group row"
+    = f.label t(:event), class: "form-input-label"
+    = f.text_field :event, Event.all.collect {|c| [c.title,c.id]}, require: true,class: "form-control"
+  div class="form-group row"
+    = f.label t(:amount), class: "form-input-label"
+    = f.number_field :amount, class: "form-control"
+  div class="form-group row"
+    = f.label t(:ticket_type), class: "form-input-label"
+    = f.select :ticket_type_id, TicketType.all.collect {|c| [c.name,c.id]}, require: true, class: "form-control"
+  div class="form-group row"
+    = f.label t(:token), class: "form-input-label"
+    = f.text_field :token, require: true, class: "form-control"
+  div class="form-group row"
+    = f.submit t(:save), class: "btn btn-primary"

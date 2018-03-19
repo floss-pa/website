@@ -1,6 +1,7 @@
 class Community < ApplicationRecord
   belongs_to :user
   has_many :members
+  has_paper_trail
   validates :user, presence: :true
   validates :name, presence: :true, uniqueness: true, length: {minimum: 6, maximum: 255}, allow_nil: false
   validates :information, presence: true,  length: {minimum: 10}, allow_nil: false

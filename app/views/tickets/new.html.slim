@@ -1,0 +1,11 @@
+div class="clearfix"
+  div class="container"
+    div class="page-header"
+      div class="row"
+          h1
+            = t(:ticket)
+            | :
+      div class="row"
+        == render 'form'
+      div class="row"
+        = link_to t(:back), tickets_path

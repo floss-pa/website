@@ -2,6 +2,7 @@ class Page < ApplicationRecord
   belongs_to :user
   has_many :carousels
   include Bootsy::Container
+  has_paper_trail
   validates :user, presence: true
   validates :title, presence: true,  allow_nil: false
   validates :language, presence: true, allwo_nil: false

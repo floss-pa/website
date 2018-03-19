@@ -1,0 +1,41 @@
+doctype html
+html
+  head
+    title Floss-pa Ticket
+    meta name="keywords" content="Ticket Floss-pa"
+  body
+    p
+      = t(:dear,name: @user.name)
+      |,
+    p
+      = t(:thanks_for_join_us,event_name: @event.title)
+    p
+      = t(:you_can_see_your_ticket_here, url: attendee_url(@attendee.id) )
+    p
+      = t(:you_can_show_this_email_on_your_cell_phone_on_the_registration_table)
+    p
+      css:
+        #qr table {
+          border-width: 0;
+          border-style: none;
+          border-color: #0000ff;
+          border-collapse: collapse;
+        }
+        #qr td {
+          border-left: solid 5px #000;
+          padding: 0;
+          margin: 0;
+          width: 0px;
+          height: 5px;
+          }
+        #qr td.black { border-color: #000; }
+        #qr td.white { border-color: #fff; }
+      div id="qr"
+        =  raw @qr.as_html unless @qr.nil?
+
+    p
+      br
+      = t(:thankfull)
+      br
+      br
+      = @event.user.name

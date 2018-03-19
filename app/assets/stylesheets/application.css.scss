@@ -2,6 +2,8 @@
 @import "bootstrap-sprockets";
 @import "bootswatch/cosmo/variables";
 @import "bootstrap";
+@import "bootstrap-datepicker";
+@import "bootstrap-timepicker";
 @import "bootswatch/cosmo/bootswatch";
 
 /* Import functional */
@@ -11,3 +13,8 @@
 @import "bootsy";
 
 @import "social-share-button";
+
+/* Import maps using leaflet */
+@import "leaflet";
+
+@import "events";

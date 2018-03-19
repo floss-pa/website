@@ -1,0 +1,125 @@
+div class="clearfix"
+  div class="container"
+    div class="page-header"
+      div class="row"
+        | &nbsp;
+      div class="row"
+        div class="modal fade" id="show_ticket"
+          div class="modal-dialog modal-lg" role="document"
+            div class="modal-content"
+              div class="modal-header"
+                h5 class="modal-title"
+                  = t(:ticket_view)
+                  button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                    span aria-hidden="true"
+                     | &times;
+                div class="modal-body"
+                  div id="ticket_content"
+                div class="modal-footer"
+                  span id="link_to_attendee"
+                  | &nbsp;
+                  button type="button" class="btn btn-secondary" data-dismiss="modal"
+                    = t(:close)
+      div class="row"
+        div class="col-lg-10"
+         | &nbsp;
+        div class="col-lg-2 text-right"
+          - if can? :update, @event
+            = link_to t(:edit), edit_event_path(@event)
+            '|
+            = link_to t(:attendees), event_attendees_path(@event)
+            '|
+          = link_to t(:back), events_path
+      div class="row"
+        figure class="figure"
+          = image_tag @event.image.url(:event), class: "figure-img img-fluid rounded"
+      div class="row"
+        | &nbsp;
+      div class="row"
+        div class="list-group"
+          div class="list-group-item list-group-item-action flex-column align-items-start"
+            div class="d-flex w-100 justify-content-between"
+              div class="row"
+                div class="col-lg-2 text-center bg-light"
+                  h1 class="display-2"
+                    = @event.start_at.strftime("%b")
+                  h2 class="display-3 text-danger"
+                    = @event.start_at.strftime("%d")
+                  h3 class="display-4"
+                    = @event.start_at.strftime("%Y")
+                div class="col-lg-8"
+                  h2 class="font-weight-bold"
+                    = @event.title
+                  p
+                    strong
+                      = t(:hosted_by)
+                      | : &nbsp;
+                    = link_to @event.user.name, user_custom_path(@event.user_id,@event.user.name)
+                  - unless @event.location.nil?
+                    p
+                      strong
+                        = t(:location)
+                        | : &nbsp;
+                      = @event.location
+                  p
+                    strong
+                      = t(:from)
+                      | : &nbsp;
+                    = @event.start_at.strftime("%I:%M %p")
+                    | &nbsp;
+                    strong
+                      = t(:until)
+                      | : &nbsp;
+                    = @event.end_at.strftime("%I:%M %p")
+                  p
+                    = link_to t(:add_to_calendar), event_calendar_download_path(@event)
+                  - unless @event.ticket_url.nil?
+                    - unless @event.ticket_url.empty?
+                      p
+                        strong
+                          = t(:tickets)
+                          | : &nbsp;
+                        = link_to @event.ticket_url, @event.ticket_url, target: "_blank"
+                  = social_share_button_tag(@event.title,desc: @event.description)
+                div class="col-lg-2"
+                  - unless @event.tickets.empty? || @event.end_at<DateTime.now
+                    - if user_signed_in?
+                      - if @attendee.nil?
+                        = link_to t(:event_registration), attendees_path(attendee: {ticket_id: @event.tickets.first.id}), method: :post , class: "btn btn-success btn-lg btn-block", data: {confirm: t(:sure_your_want_to_attend_this_event)},id: "Event_Registration", remote: true
+                      - else
+                        = link_to t(:view_your_ticket), attendee_path(@attendee), remote: true, class: "btn btn-success btn-lg btn-block"
+                    - else
+                      = link_to t(:event_registration), new_user_session_path, class: "btn btn-warning btn-lg btn-block"
+                  span id="view_your_ticket"
+      div class="row"
+        div class="col-lg-12"
+          = sanitize @event.description
+      div class="row"
+        div class="col-lg-12"
+          - unless @event.latitude.nil?
+            = map(container_id: "show_map",center: {latlng: ["#{@event.latitude}", "#{@event.longitude}"],zoom: 14}, markers: [{latlng: ["#{@event.latitude}", "#{@event.longitude}"]}])
+      div class="row"
+        | &nbsp;
+      div class="row"
+          - if @community.nil?
+            = @event.organizer
+          - else
+            div class="list-group"
+              div class="list-group-item list-group-item-action flex-column align-items-start"
+                div class="d-flex w-100 justify-content-between"
+                  div class="row"
+                    div class="col-lg-2 text-center bg-light"
+                      = image_tag @community.logo.url(:thumb), class: "img-fluid rounded"
+                    div class="col-lg-10"
+                      strong
+                        = @community.name
+                      p
+                        = sanitize @community.information
+      div class="row"
+        div class="col-lg-10"
+         | &nbsp;
+        div class="col-lg-2 text-right"
+          - if can? :update, @event
+            = link_to t(:edit), edit_event_path(@event)
+            '|
+          = link_to t(:back), events_path

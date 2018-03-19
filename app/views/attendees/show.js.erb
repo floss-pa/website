@@ -1,0 +1,3 @@
+$('#ticket_content').html('<%= j render(@attendee) %>');
+$('#link_to_attendee').html('<%= link_to t(:print_version), attendee_path(@attendee), target: "_blank", class: "btn btn-primary"%>');
+$('#show_ticket').modal('show');
