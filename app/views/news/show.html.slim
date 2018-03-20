@@ -18,7 +18,7 @@ div class="container"
                 - if can? :update, @news
                   => link_to t(:edit), edit_news_path(@news)
                   '|
-                =< link_to t(:black), news_index_path
+                =< link_to t(:back), news_index_path
               h2 class="display-3"
                 = @news.title
               div class="col-lg-10"
