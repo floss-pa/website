@@ -357,3 +357,10 @@ es:
   required: "Campo Requerido"
   location_instruction: 'Puedes escribir la dirección o arrastrar el marcador en el map, esto agrega la dirección exacta al campo de "Dirección"'
   tickets_info: "Ingresa la dirección web del sistema de tickets externo, dejalo en blanco si usas nuestros tickets, el sistema ingresa la dirección por usted"
+  sign_up_with: "Registrarse con"
+  sign_up: "Registrarse"
+  log_in: "Iniciar sesión"
+  log_in_with: "Iniciar sesión con"
+  forgot_your_password: "Restablecer contraseña"
+  didnt_receive_confirmation_instructions: "¿No recibió instrucciones de confirmación?"
+  didnt_receive_unlock_instructions: "¿No recibió instrucciones de desbloqueo?"

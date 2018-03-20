@@ -60,7 +60,7 @@ Things you may want to cover:
   ```
   ```ruby
     # Creat user 
-    User.create!({:name=>"name",:email => "you_email@.com", :password => "111111", :password_confirmation => "111111" }) 
+    User.create!({:name=>"name",:email => "you_email@gmail.com", :password => "111111", :password_confirmation => "111111" }) 
     u=User.first    
   ```
   ```ruby
@@ -68,7 +68,7 @@ Things you may want to cover:
     r=Role.new
     r.name="Admin"
     r.save
-    a=u.assingnments.new 
+    a=u.assignments.new 
     a.role_id=1
     a.save   
   ```
