@@ -18,3 +18,14 @@
 @import "leaflet";
 
 @import "events";
+
+/* Import font awesome*/
+@import "font-awesome";
+
+.social-login {
+  padding-right: 20px;
+  & .btn {
+    border-radius: 10%;
+    width: 80px;
+  }
+}
