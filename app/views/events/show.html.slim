@@ -83,13 +83,19 @@ div class="clearfix"
                   = social_share_button_tag(@event.title,desc: @event.description)
                 div class="col-lg-2"
                   - unless @event.tickets.empty? || @event.end_at<DateTime.now
-                    - if user_signed_in?
-                      - if @attendee.nil?
-                        = link_to t(:event_registration), attendees_path(attendee: {ticket_id: @event.tickets.first.id}), method: :post , class: "btn btn-success btn-lg btn-block", data: {confirm: t(:sure_your_want_to_attend_this_event)},id: "Event_Registration", remote: true
+                    - if @available
+                      - if user_signed_in?
+                        - if @attendee.nil?
+                          = link_to t(:event_registration), attendees_path(attendee: {ticket_id: @event.tickets.first.id}), method: :post , class: "btn btn-success btn-lg btn-block", data: {confirm: t(:sure_your_want_to_attend_this_event)},id: "Event_Registration", remote: true
+                        - else
+                          = link_to t(:view_your_ticket), attendee_path(@attendee), remote: true, class: "btn btn-success btn-lg btn-block"
                       - else
-                        = link_to t(:view_your_ticket), attendee_path(@attendee), remote: true, class: "btn btn-success btn-lg btn-block"
+                        = link_to t(:event_registration), new_user_session_path, class: "btn btn-warning btn-lg btn-block"
                     - else
-                      = link_to t(:event_registration), new_user_session_path, class: "btn btn-warning btn-lg btn-block"
+                      - if @event.ticket_url.include? request.domain
+                        = link_to t(:sold_out), "#", class: "btn btn-success btn-lg disabled", disabled: true
+                      - else
+                        = link_to t(:get_tickets), @event.ticket_url, target: "_blank", class: "btn btn-success btn-lg"
                   span id="view_your_ticket"
       div class="row"
         div class="col-lg-12"

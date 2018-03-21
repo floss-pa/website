@@ -103,6 +103,8 @@ GEM
     faraday (0.12.2)
       multipart-post (>= 1.2, < 3)
     ffi (1.9.21)
+    font-awesome-rails (4.7.0.3)
+      railties (>= 3.2, < 5.2)
     geocoder (1.4.6)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
@@ -312,6 +314,7 @@ DEPENDENCIES
   date_time_attribute
   devise
   exception_handler
+  font-awesome-rails
   geocoder
   icalendar
   jbuilder (~> 2.5)
