@@ -364,3 +364,5 @@ es:
   forgot_your_password: "Restablecer contraseña"
   didnt_receive_confirmation_instructions: "¿No recibió instrucciones de confirmación?"
   didnt_receive_unlock_instructions: "¿No recibió instrucciones de desbloqueo?"
+  sold_out: "Vendidos"
+  get_tickets: "Entradas"
