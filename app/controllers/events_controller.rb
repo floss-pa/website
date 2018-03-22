@@ -23,6 +23,11 @@ class EventsController < ApplicationController
     if user_signed_in?
       @attendee = @event.attendees.where(:user_id=>current_user).first
     end
+    @available=false
+    unless @event.tickets.first.amount.nil?
+      amount = @event.tickets.first.amount - @event.attendees.count
+      @available=true if amount>0
+    end
     @community = Community.find(@event.community_id) unless @event.community_id.nil?
   end
 

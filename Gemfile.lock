@@ -103,6 +103,8 @@ GEM
     faraday (0.12.2)
       multipart-post (>= 1.2, < 3)
     ffi (1.9.21)
+    font-awesome-rails (4.7.0.3)
+      railties (>= 3.2, < 5.2)
     geocoder (1.4.6)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
@@ -122,7 +124,7 @@ GEM
       rails (>= 4.2.0)
     listen (3.1.5)
       rb-inotify (~> 0.9, >= 0.9.7)
-    loofah (2.2.0)
+    loofah (2.2.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.0)
@@ -312,6 +314,7 @@ DEPENDENCIES
   date_time_attribute
   devise
   exception_handler
+  font-awesome-rails
   geocoder
   icalendar
   jbuilder (~> 2.5)

@@ -9,9 +9,11 @@ class Ticket < ApplicationRecord
 
   def add_token
     event=self.event
-    self.token=event.title.gsub(/\s/,'-') + '-' + self.event_id.to_s + '-' + self.id.to_s
-    self.save
-    event.ticket_url=Rails.application.routes.url_helpers.ticket_url(self.token)
-    event.save
+      self.token=event.title.gsub(/\s/,'-') + '-' + self.event_id.to_s + '-' + self.id.to_s
+      self.save
+    if event.ticket_url.nil?
+      event.ticket_url=Rails.application.routes.url_helpers.ticket_url(self.token)
+      event.save
+    end
   end
 end
