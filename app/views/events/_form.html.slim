@@ -51,6 +51,9 @@
     - %w[x y x2 y2 w h vy].each do |attribute| 
      = f.hidden_field "crop_#{attribute}" 
     div id="Preview" class="text-center" 
+     - if params[:action]==="edit"
+        div class="thumbnail"
+          = image_tag @event.image.url, id: "image"
   div class="form-group row"
     = f.label t(:location), class: "form-input-label"
     = f.text_field :location, placeholder: t(:place_where_your_event), required: true, minimal: 10, class: "form-control"
