@@ -81,3 +81,5 @@ gem 'geocoder'
 gem 'icalendar'
 gem 'leaflet-rails'
 gem "font-awesome-rails"
+gem 'jcrop-rails-v2'
+
