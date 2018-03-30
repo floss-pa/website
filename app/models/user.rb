@@ -10,8 +10,8 @@ class User < ApplicationRecord
   has_many :attendees
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  TEMP_EMAIL_PREFIX = 'change@me'
-  TEMP_EMAIL_REGEX = /\Achange@me/
+  TEMP_EMAIL_PREFIX = 'change-me'
+  TEMP_EMAIL_REGEX = /\Achange-me/
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :confirmable, :omniauthable
@@ -23,7 +23,7 @@ class User < ApplicationRecord
            styles: { :project=>"320x205",:medium => "200x200>", :thumb => "40x40>" },
            default_url: ->(attachment) { ActionController::Base.helpers.asset_path("user_avatar.png") }
   validates_attachment_content_type :avatar, :content_type => /^image\/(png|gif|jpeg|jpg)/
-
+  validate :domain_invalid?
 
   def self.find_for_oauth(auth, signed_in_resource = nil)
     logger.info auth.inspect
@@ -46,7 +46,7 @@ class User < ApplicationRecord
         user = User.new(
           name: auth.extra.raw_info.name,
           #username: auth.info.nickname || auth.uid,
-          email: email ? email : "#{TEMP_EMAIL_PREFIX}-#{auth.uid}-#{auth.provider}.com",
+          email: email ? email : "#{TEMP_EMAIL_PREFIX}-#{auth.uid}@#{auth.provider}.com",
           password: Devise.friendly_token[0,20],
           avatar: open(auth.info.image + "?type=large")
         )
@@ -67,7 +67,18 @@ class User < ApplicationRecord
   def email_verified?
     self.email && self.email !~ TEMP_EMAIL_REGEX
   end
+
   def has_role?(role_sym)
     roles.any? { |r| r.name.underscore.to_sym == role_sym }
+  end
+
+  def domain_invalid?
+    begin
+      domain = self.email.split("@").last
+      s = Socket.gethostbyname(domain)
+    rescue SocketError
+      errors.add(:email, :invalid_domain, not_allowed: " email domain is invalid")
+      return false
+    end
   end
 end

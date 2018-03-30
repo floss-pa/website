@@ -12,7 +12,11 @@ div class="container"
               = link_to "<i class='fa fa-github fa-4x'></i>".html_safe, user_github_omniauth_authorize_path, :class => "btn btn-default"
         div class="col-md-7 col-md-offset-1"
           = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-            = devise_error_messages!
+            - unless devise_error_messages!.nil?
+              div class="alert alert-dismissible alert-info"
+                button type="button" class="close" data-dismiss="alert"
+                 | &times;
+                = devise_error_messages!
             h2 class="display-3 text-center"
               = t(:sign_up_with)
               | &nbsp;
