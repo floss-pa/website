@@ -18,6 +18,12 @@
     = f.text_field :link, class: "form-control"
   div class="form-group row"
     = f.label t(:image), class: "form-input-label"
+    - %w[x y x2 y2 w h vy].each do |attribute|
+       = f.hidden_field "crop_#{attribute}"
+    div id="carouselPreview" class="text-center"
+     - if params[:action]==="edit"
+        div class="thumbnail"
+          = image_tag @carousel.image.url, id: "carouselimage"
     = f.file_field :image, class: "form-control-file"
   div class="form-group row"
     = f.label t(:page), class: "form-input-label"
