@@ -7,7 +7,7 @@ div class="container"
           - item_class = count==0 ? {class: "item active"} : {class: "item"}
           div *item_class
             - count=1
-            = image_tag row.image.url
+            = image_tag row.image.url(:carousel)
             div class="container"
               div class="carousel-caption"
                 h1 = row.header
