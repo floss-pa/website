@@ -10,6 +10,8 @@ div class="container"
               = link_to "<i class='fa fa-facebook fa-4x'></i>".html_safe, user_facebook_omniauth_authorize_path, :class => "btn btn-primary"
             span class="social-login"
               = link_to "<i class='fa fa-github fa-4x'></i>".html_safe, user_github_omniauth_authorize_path, :class => "btn btn-default"
+            span class="social-login"
+              = link_to "<i class='fa fa-google fa-4x'></i>".html_safe, user_google_oauth2_omniauth_authorize_path, :class => "btn btn-default"
         div class="col-md-7 col-md-offset-1"
           = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
             - unless devise_error_messages!.empty?
