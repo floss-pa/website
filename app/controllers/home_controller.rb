@@ -5,15 +5,15 @@ class HomeController < ApplicationController
        set_meta_tags og: {
                   url: "#{request.base_url + request.original_fullpath}",
                   type: "website",
-                  title: "#{@page.title} Software Libre y Codigo Abierto Panama",
-                  description: @page.content,
+                  title: "#{@page.nil? ? "" : @page.title} Software Libre y Codigo Abierto Panama",
+                  description: @page.nil? ? "" : @page.content,
                   site_name: "floss-pa",
                   image: "https://floss-pa.net/images/logo.png}"
                   }
     set_meta_tags twitter: {
                 card:  "summary",
-                description: @page.content,
-                title: @page.title,
+                description: @page.nil? ? "" : @page.content,
+                title: @page.nil? ? "" : @page.title,
                 creator: "@flosspa",
                 image: {
                         _:       "https://floss-pa.net/images/logo.png}",
