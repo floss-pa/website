@@ -6,7 +6,7 @@ application up and running.
 Things you may want to cover:
 
 * Ruby version
-  Minumal Ruby version is 2.2
+  Minumal Ruby version is 2.3.7
 * System dependencies
   On centos we require this packages:
    openssl, libyaml, libffi, zlib, gcc, make, readline-devel, ncurses-devel, gdbm-devel, glibc-devel, openssl-devel, libyaml-devel, libffi-devel, zlib-devel, mariadb-devel, ImageMagick
