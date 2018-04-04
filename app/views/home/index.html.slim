@@ -7,11 +7,11 @@ div class="bs-docs-section clearfix"
           button type="button" class="close" data-dismiss="alert"
             | &times;
           = notice
- - unless @page.carousels.nil?
+ - unless @page.nil?
      == render 'shared/carousel'
  div class="section-tout"
    div class="container"
      div class="row"
        div class="col-lg-12"
          div class="page-header"
-           = sanitize @page.content
+           = sanitize @page.content unless @page.nil?

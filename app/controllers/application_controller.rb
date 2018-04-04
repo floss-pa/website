@@ -30,8 +30,8 @@ class ApplicationController < ActionController::Base
     I18n.locale = :es
   end
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name,:avatar])
-    devise_parameter_sanitizer.permit(:account_update, keys: [:name,:avatar])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :avatar, :crop_x, :crop_y, :crop_x2, :crop_y2, :crop_w, :crop_h, :crop_vy])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :avatar, :crop_x, :crop_y, :crop_x2, :crop_y2, :crop_w, :crop_h, :crop_vy])
   end
   def storable_location?
     request.get? && is_navigational_format? && !devise_controller? && !request.xhr?

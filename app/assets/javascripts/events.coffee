@@ -5,8 +5,7 @@
 $(document).on 'turbolinks:load', ->
   event_latitude = $('#event_latitude').val() || "8.984062"
   event_longitude = $('#event_longitude').val() || "-79.521593"
-  elementExists = document.getElementById('show_map')
-  if !elementExists?
+  if ($('#map').get(0) && !$('#show_map').get(0))
    EventMarker = L.marker([
      event_latitude
      event_longitude
@@ -38,3 +37,5 @@ $(document).on 'turbolinks:load', ->
       map.panTo newLatLon
       return
     return
+  load_image_preview('event_image','Preview','image',600,1200)
+

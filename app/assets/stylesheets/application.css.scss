@@ -19,13 +19,11 @@
 
 @import "events";
 
+@import "user";
+
 /* Import font awesome*/
 @import "font-awesome";
 
-.social-login {
-  padding-right: 20px;
-  & .btn {
-    border-radius: 10%;
-    width: 80px;
-  }
-}
+/* Import cropper*/
+@import "jquery.Jcrop";
+

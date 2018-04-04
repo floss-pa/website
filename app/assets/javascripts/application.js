@@ -13,6 +13,7 @@
 //= require rails-ujs
 //= require turbolinks
 //= require jquery
+//= require jquery.Jcrop
 //= require parsley
 //= require parsley.i18n.es
 //= require bootstrap-sprockets

@@ -280,6 +280,13 @@ Devise.setup do |config|
   #config.omniauth :twitter, "KEY", "SECRET"
   #config.omniauth :linked_in, "KEY", "SECRET"
   config.omniauth :github, ENV['GH_ID'], ENV['GH_TOKEN'],scope: "user,gist"
+  config.omniauth :google_oauth2, ENV['GOOGLE_CLIENT_ID'], ENV['GOOGLE_CLIENT_SECRET'],
+     {
+      scope: 'email, profile, plus.me',
+      prompt: 'select_account',
+      image_aspect_ratio: 'square',
+      image_size: 50
+    }
   #set this to true to debug device omniauth 
   OmniAuth.config.logger = Rails.logger if Rails.env.development?
 end
