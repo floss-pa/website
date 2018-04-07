@@ -47,14 +47,35 @@ class User < ApplicationRecord
       user = User.where(:email => email).first if email
       if user.nil?
         res = Net::HTTP.get_response(URI(auth.info.image + "?type=large"))
-        logger.info "res: #{auth.info.image}?type=large"
-        user = User.new(
-          name: auth.extra.raw_info.name,
-          #username: auth.info.nickname || auth.uid,
-          email: email ? email : "#{TEMP_EMAIL_PREFIX}-#{auth.uid}@#{auth.provider}.com",
-          password: Devise.friendly_token[0,20],
-          avatar: open(auth.info.image + "?type=large")
-        )
+        case res
+        when Net::HTTPSuccess then
+          image= auth.info.image + "?type=large"
+        when Net::HTTPRedirection then
+          location=res['location']
+          new_res = Net::HTTP.get_response(URI(location))
+          if new_res.code.to_i==200.to_i
+            image= location
+          end
+        else
+          image = nil
+        end
+        logger.info "res: #{image}"
+        unless image.nil?
+          user = User.new(
+            name: auth.extra.raw_info.name,
+            #username: auth.info.nickname || auth.uid,
+            email: email ? email : "#{TEMP_EMAIL_PREFIX}-#{auth.uid}@#{auth.provider}.com",
+            password: Devise.friendly_token[0,20],
+            avatar: open(image)
+          )
+        else
+          user = User.new(
+            name: auth.extra.raw_info.name,
+            #username: auth.info.nickname || auth.uid,
+            email: email ? email : "#{TEMP_EMAIL_PREFIX}-#{auth.uid}@#{auth.provider}.com",
+            password: Devise.friendly_token[0,20]
+          )
+        end
         user.skip_confirmation!
         user.save!
       else
